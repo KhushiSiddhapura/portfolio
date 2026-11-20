@@ -101,15 +101,6 @@ export const ResumePage = () => {
             >
               Download PDF Resume
             </Button>
-
-            <Link
-              to="/admin/resume"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg text-zinc-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-colors"
-              title="Manage resume content from Admin Dashboard"
-            >
-              <Settings className="w-3.5 h-3.5 text-[#7C3AED]" />
-              <span>CMS</span>
-            </Link>
           </div>
         </div>
 

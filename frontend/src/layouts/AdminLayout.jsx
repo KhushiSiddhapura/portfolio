@@ -42,7 +42,7 @@ export const AdminLayout = () => {
 
   const handleLogout = async () => {
     await dispatch(logoutAdmin());
-    navigate('/admin/login');
+    navigate('/');
   };
 
   const isActive = (path, exact) => {
