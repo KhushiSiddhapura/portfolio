@@ -107,7 +107,7 @@ export const ResumePage = () => {
         {/* ================= RESUME A4 SHEET (ALWAYS LIGHT THEME) ================= */}
         <div className="bg-white text-zinc-900 p-8 sm:p-12 rounded-xl border border-slate-200/90 shadow-xl print:p-0 print:border-none print:shadow-none print:rounded-none">
           {/* 1. HEADER SECTION (Info on Left, Circular Portrait on Right) */}
-          <header className="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-zinc-200 print:border-zinc-300">
+          <div className="resume-header flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-zinc-200 print:border-zinc-300 print:flex">
             <div className="space-y-2 flex-1">
               <h1 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-zinc-900 print:text-black font-sans">
                 {profile?.name || 'Khushi S Siddhapura'}
@@ -175,7 +175,7 @@ export const ResumePage = () => {
                 />
               </div>
             </div>
-          </header>
+          </div>
 
           {/* 2. TWO-COLUMN LAYOUT BODY */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-6">

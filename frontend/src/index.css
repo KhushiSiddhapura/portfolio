@@ -186,9 +186,7 @@
     font-size: 11pt;
   }
 
-  nav,
-  header,
-  footer,
+  /* Only hide website navigation and non-print controls, NOT resume document header */
   .print\:hidden,
   button,
   .theme-toggle {
