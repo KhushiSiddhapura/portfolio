@@ -52,7 +52,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="sticky top-0 z-50 w-full pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none">
+    <div className="sticky top-0 z-50 w-full pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none print:hidden">
 
       {/* Floating Island Navbar */}
       <header

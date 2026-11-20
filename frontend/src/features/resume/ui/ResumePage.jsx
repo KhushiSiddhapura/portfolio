@@ -70,7 +70,7 @@ export const ResumePage = () => {
       : defaultActivities;
 
   return (
-    <div className="w-full min-h-screen py-8 sm:py-12 bg-slate-100 text-zinc-900 transition-colors duration-200">
+    <div className="w-full min-h-screen py-8 sm:py-12 bg-slate-100 text-zinc-900 transition-colors duration-200 print:py-0 print:bg-white print:min-h-0">
       <div className="max-w-[920px] mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
         {/* Top Control Bar (Hidden during print) */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white shadow-sm print:hidden">
@@ -167,6 +167,10 @@ export const ResumePage = () => {
                 <img
                   src={profile?.profileImage?.url || '/khushi.png'}
                   alt={profile?.name || 'Khushi S Siddhapura'}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/khushi.png';
+                  }}
                   className="w-full h-full object-cover object-top rounded-full"
                 />
               </div>
