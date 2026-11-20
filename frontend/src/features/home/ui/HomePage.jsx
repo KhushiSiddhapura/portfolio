@@ -14,6 +14,7 @@ import {
   Send,
 } from 'lucide-react';
 import useHome from '../hook/useHome';
+import VisibleLongWave from '../../../shared/components/svg/VisibleLongWave';
 import WaveBottom from '../../../shared/components/svg/WaveBottom';
 import WaveTop from '../../../shared/components/svg/WaveTop';
 import CurvedDivider from '../../../shared/components/svg/CurvedDivider';
@@ -39,7 +40,38 @@ export const HomePage = () => {
   return (
     <div className="w-full overflow-hidden">
       {/* 1. HERO SECTION WITH CURVED WAVE BOTTOM */}
-      <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 bg-[var(--background)] overflow-hidden">
+      <section className="relative pt-12 pb-24 md:pt-20 md:pb-32 bg-[var(--background)] overflow-hidden">
+        {/* Visible Long Curving Gradient Ribbons in Background */}
+        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden opacity-35 dark:opacity-20">
+          <svg viewBox="0 0 1440 800" fill="none" className="w-full h-full" preserveAspectRatio="none">
+            <path
+              d="M-80,180 C320,30 640,420 1080,140 C1320,0 1460,220 1560,360"
+              stroke="url(#hero-long-curve)"
+              strokeWidth="42"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path
+              d="M-40,260 C360,110 680,500 1120,220 C1360,70 1500,300 1600,440"
+              stroke="url(#hero-long-curve-soft)"
+              strokeWidth="20"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <defs>
+              <linearGradient id="hero-long-curve" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#7C3AED" />
+                <stop offset="50%" stopColor="#A78BFA" />
+                <stop offset="100%" stopColor="#C4B5FD" />
+              </linearGradient>
+              <linearGradient id="hero-long-curve-soft" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#C4B5FD" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#7C3AED" stopOpacity="0.4" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
         <OrganicShape className="-top-24 -right-24" size={480} opacity={0.06} />
         <OrganicShape className="top-1/2 -left-32" size={360} opacity={0.04} />
 
@@ -173,7 +205,7 @@ export const HomePage = () => {
         </div>
 
         <div className="absolute bottom-0 inset-x-0">
-          <WaveBottom fill="var(--surface)" height="50px" />
+          <VisibleLongWave fill="var(--surface)" height="80px" accentColor="#7C3AED" secondaryColor="#8B5CF6" />
         </div>
       </section>
 
@@ -249,7 +281,7 @@ export const HomePage = () => {
         </div>
 
         <div className="absolute bottom-0 inset-x-0">
-          <SectionTransition fill="var(--background)" height="44px" />
+          <VisibleLongWave fill="var(--background)" height="80px" accentColor="#6D28D9" secondaryColor="#A78BFA" />
         </div>
       </section>
 
@@ -386,7 +418,7 @@ export const HomePage = () => {
         </div>
 
         <div className="absolute bottom-0 inset-x-0">
-          <CurvedDivider fill="var(--surface)" height="42px" />
+          <VisibleLongWave fill="var(--surface)" height="80px" accentColor="#7C3AED" secondaryColor="#8B5CF6" />
         </div>
       </section>
 
@@ -432,7 +464,7 @@ export const HomePage = () => {
         </div>
 
         <div className="absolute bottom-0 inset-x-0">
-          <SectionTransition fill="var(--background)" height="44px" />
+          <VisibleLongWave fill="var(--background)" height="80px" accentColor="#5B21B6" secondaryColor="#7C3AED" />
         </div>
       </section>
 
@@ -491,7 +523,7 @@ export const HomePage = () => {
         </div>
 
         <div className="absolute bottom-0 inset-x-0">
-          <WaveTop fill="var(--surface)" height="44px" />
+          <VisibleLongWave fill="var(--surface)" height="80px" accentColor="#7C3AED" secondaryColor="#A78BFA" />
         </div>
       </section>
 
@@ -539,7 +571,7 @@ export const HomePage = () => {
         </div>
 
         <div className="absolute bottom-0 inset-x-0">
-          <SectionTransition fill="var(--background)" height="44px" />
+          <VisibleLongWave fill="var(--background)" height="80px" accentColor="#6D28D9" secondaryColor="#8B5CF6" />
         </div>
       </section>
 
