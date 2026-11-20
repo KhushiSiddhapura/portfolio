@@ -44,19 +44,19 @@ export const HomePage = () => {
   return (
     <div className="w-full overflow-hidden">
       {/* 1. HERO SECTION WITH CENTER PHOTO & BALANCED TYPOGRAPHY */}
-      <section className="relative pt-8 sm:pt-12 md:pt-16 pb-24 md:pb-32 bg-[var(--background)] overflow-hidden max-w-full">
+      <section className="relative pb-24 md:pb-32 bg-[var(--background)] overflow-hidden max-w-full">
         {/* Ambient Dark Nebula / Soft Radiant Purple Glow in Center */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-tr from-purple-700/20 via-fuchsia-600/15 to-indigo-600/15 rounded-full blur-[130px] pointer-events-none select-none opacity-70 dark:opacity-50" />
 
         {/* Center Stage Container with Overflow Guard */}
         <div className="relative max-w-[1100px] mx-auto px-4 min-h-[400px] sm:min-h-[460px] md:min-h-[500px] flex flex-col items-center justify-end z-10 select-none overflow-hidden">
           {/* Toned Down, Responsive Background Typography */}
-          <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-full overflow-hidden text-center pointer-events-none select-none z-0 px-4">
+          <div className="absolute top-[15%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-full overflow-hidden text-center pointer-events-none select-none z-0 px-4">
             <h1
               className="font-black tracking-tight uppercase leading-none select-none whitespace-nowrap bg-gradient-to-r from-purple-500/25 via-violet-400/20 to-indigo-500/25 dark:from-purple-400/15 dark:via-fuchsia-400/15 dark:to-indigo-400/15 bg-clip-text text-transparent"
-              style={{ fontSize: 'clamp(2.8rem, 10vw, 7.5rem)' }}
+              style={{ fontSize: 'clamp(2.8rem, 8vw, 7.5rem)' }}
             >
-              KHUSHI
+              KHUSHI SIDDHAPURA
             </h1>
           </div>
 

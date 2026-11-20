@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, FileText } from 'lucide-react';
+import { Menu, X, FileText, Globe } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
 export const Navbar = () => {
@@ -39,10 +39,10 @@ export const Navbar = () => {
     <div className="sticky top-0 z-50 w-full pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none">
       {/* Floating Island Capsule Navbar */}
       <header
-        className={`max-w-[1080px] mx-auto w-full transition-all duration-300 pointer-events-auto rounded-full px-4 sm:px-6 py-2 sm:py-2.5 border ${
+        className={`max-w-[1120px] mx-auto w-full transition-all duration-300 pointer-events-auto rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 border ${
           scrolled
-            ? 'bg-[var(--card)]/90 backdrop-blur-md border-[var(--border)] shadow-lg'
-            : 'bg-[var(--card)]/80 backdrop-blur-md border-[var(--border)] shadow-md'
+            ? 'bg-[var(--card)]/95 backdrop-blur-md border-[var(--border)] shadow-lg'
+            : 'bg-[var(--card)]/85 backdrop-blur-md border-[var(--border)] shadow-md'
         } flex items-center justify-between gap-2 sm:gap-4`}
       >
         {/* Brand Logo & Name */}
@@ -50,7 +50,7 @@ export const Navbar = () => {
           to="/"
           className="flex items-center gap-2 group text-decoration-none focus:outline-none shrink-0"
         >
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[var(--primary)] to-[var(--primary-hover)] flex items-center justify-center text-white font-extrabold text-sm shadow-xs group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[var(--primary)] to-[var(--primary-hover)] flex items-center justify-center text-white font-extrabold text-sm shadow-xs group-hover:scale-105 transition-transform shrink-0">
             K
           </div>
           <span className="font-extrabold text-sm sm:text-base tracking-tight text-[var(--text)] group-hover:text-[var(--primary)] transition-colors whitespace-nowrap">
@@ -58,7 +58,7 @@ export const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Navigation Links - Optimized for clean spacing without wrapping */}
         <nav className="hidden md:flex items-center gap-0.5 lg:gap-1.5 shrink-0">
           {navLinks.map((link) => {
             const active = isActive(link.path);
@@ -66,7 +66,7 @@ export const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative px-2.5 lg:px-3 py-1.5 text-xs font-semibold rounded-full whitespace-nowrap transition-all ${
+                className={`relative px-2.5 lg:px-3 py-1.5 text-xs lg:text-sm font-semibold rounded-full whitespace-nowrap transition-all ${
                   active
                     ? 'text-[var(--primary)] bg-[var(--primary-soft)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--surface)]'
@@ -78,20 +78,32 @@ export const Navbar = () => {
           })}
         </nav>
 
-        {/* Action Items: Theme Toggle & Resume Pill */}
-        <div className="hidden md:flex items-center gap-2 lg:gap-3 shrink-0">
+        {/* Action Controls: Language/Globe, Theme Toggle & Resume Button */}
+        <div className="hidden md:flex items-center gap-2 lg:gap-2.5 shrink-0">
+          {/* Language / Globe indicator button */}
+          <button
+            type="button"
+            className="flex items-center gap-1 px-2 py-1.5 rounded-full text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition-colors focus:outline-none border border-transparent hover:border-[var(--border)]"
+            title="Language: English (US)"
+            aria-label="Language options"
+          >
+            <Globe className="w-3.5 h-3.5 text-[var(--text-muted)]" />
+            <span className="text-[11px] font-semibold tracking-wider">EN</span>
+          </button>
+
           <ThemeToggle />
+
           <Link
             to="/resume"
-            className="inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-1.5 lg:py-2 text-xs font-bold text-white bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-950 hover:bg-[var(--primary)] dark:hover:bg-[var(--primary)] dark:hover:text-white rounded-full transition-all duration-200 active:scale-95 shadow-xs whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-1.5 lg:py-2 text-xs font-bold text-white bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-950 hover:bg-[var(--primary)] dark:hover:bg-[var(--primary)] dark:hover:text-white rounded-full transition-all duration-200 active:scale-95 shadow-xs whitespace-nowrap ml-1"
           >
             <FileText className="w-3.5 h-3.5" />
             <span>Resume</span>
           </Link>
         </div>
 
-        {/* Mobile Navigation Toggle */}
-        <div className="flex md:hidden items-center gap-2">
+        {/* Mobile Navigation Toggle & Controls */}
+        <div className="flex md:hidden items-center gap-1.5">
           <ThemeToggle />
           <button
             type="button"
@@ -106,7 +118,7 @@ export const Navbar = () => {
 
       {/* Mobile Drawer Menu */}
       {isOpen && (
-        <div className="md:hidden pointer-events-auto max-w-[1080px] mx-auto mt-2 rounded-2xl border border-[var(--border)] bg-[var(--card)]/95 backdrop-blur-xl p-4 shadow-xl space-y-2 animate-in fade-in duration-200">
+        <div className="md:hidden pointer-events-auto max-w-[1120px] mx-auto mt-2 rounded-2xl border border-[var(--border)] bg-[var(--card)]/95 backdrop-blur-xl p-4 shadow-xl space-y-2 animate-in fade-in duration-200">
           <nav className="flex flex-col space-y-1">
             {navLinks.map((link) => {
               const active = isActive(link.path);
@@ -126,7 +138,7 @@ export const Navbar = () => {
             })}
           </nav>
 
-          <div className="pt-2 border-t border-[var(--border)]">
+          <div className="pt-2 border-t border-[var(--border)] flex flex-col gap-2">
             <Link
               to="/resume"
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-bold text-white bg-[var(--primary)] hover:bg-[var(--primary-hover)] rounded-xl transition-all shadow-xs"
