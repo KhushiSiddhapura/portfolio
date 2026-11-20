@@ -68,7 +68,7 @@ export const HomePage = () => {
             <img
               src="/khushi.png"
               alt={profile?.name || 'Khushi Siddhapura'}
-              className="relative z-10 max-h-[360px] sm:max-h-[420px] md:max-h-[480px] lg:max-h-[520px] w-auto object-contain select-none pointer-events-none drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+              className="relative z-10 max-h-[320px] sm:max-h-[480px] md:max-h-[480px] lg:max-h-[520px] w-auto object-contain select-none pointer-events-none drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
             />
           </div>
         </div>
