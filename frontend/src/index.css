@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #FFFFFF;
+    --surface: #FAFAFA;
+    --surface-alt: #F5F3FF;
+    --card: #FFFFFF;
+
+    --primary: #7C3AED;
+    --primary-hover: #6D28D9;
+    --primary-soft: #F5F3FF;
+    --primary-border: #DDD6FE;
+
+    --text: #18181B;
+    --text-secondary: #52525B;
+    --text-muted: #71717A;
+
+    --border: #E4E4E7;
+    --border-strong: #D4D4D8;
+
+    --success: #15803D;
+    --warning: #B45309;
+    --danger: #DC2626;
+  }
+
+  [data-theme="dark"] {
+    --background: #09090B;
+    --surface: #111113;
+    --surface-alt: #181522;
+    --card: #18181B;
+
+    --primary: #A78BFA;
+    --primary-hover: #C4B5FD;
+    --primary-soft: #2E2147;
+    --primary-border: #4C3573;
+
+    --text: #FAFAFA;
+    --text-secondary: #D4D4D8;
+    --text-muted: #A1A1AA;
+
+    --border: #27272A;
+    --border-strong: #3F3F46;
+
+    --success: #4ADE80;
+    --warning: #FBBF24;
+    --danger: #F87171;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom theme mapping utility classes */
+.bg-background { background-color: var(--background); }
+.bg-surface { background-color: var(--surface); }
+.bg-surface-alt { background-color: var(--surface-alt); }
+.bg-card { background-color: var(--card); }
+
+.bg-primary { background-color: var(--primary); }
+.bg-primary-hover:hover { background-color: var(--primary-hover); }
+.bg-primary-soft { background-color: var(--primary-soft); }
+
+.text-primary { color: var(--primary); }
+.text-text { color: var(--text); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+.border-border { border-color: var(--border); }
+.border-strong { border-color: var(--border-strong); }
+.border-primary-border { border-color: var(--primary-border); }
+
+/* SVG Curve fills */
+.fill-background { fill: var(--background); }
+.fill-surface { fill: var(--surface); }
+.fill-surface-alt { fill: var(--surface-alt); }
+.fill-card { fill: var(--card); }
+
+/* Custom clean scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
