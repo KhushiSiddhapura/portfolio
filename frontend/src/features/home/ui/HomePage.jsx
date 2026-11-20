@@ -46,8 +46,8 @@ export const HomePage = () => {
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Column - Hero Content */}
-            <div className="lg:col-span-8 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--surface-alt)] border border-[var(--primary-border)] text-[var(--primary)] text-xs font-medium">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--surface-alt)] border border-[var(--primary-border)] text-[var(--primary)] text-xs font-medium shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" />
                 <span>Available for Internships & Projects</span>
               </div>
@@ -72,7 +72,7 @@ export const HomePage = () => {
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <Link
                   to="/projects"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm text-white bg-[var(--primary)] hover:bg-[var(--primary-hover)] shadow-sm transition-all duration-200 active:scale-95"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white bg-[var(--primary)] hover:bg-[var(--primary-hover)] shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 hover:-translate-y-0.5"
                 >
                   <span>View Projects</span>
                   <ArrowRight className="w-4 h-4" />
@@ -80,7 +80,7 @@ export const HomePage = () => {
 
                 <Link
                   to="/resume"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm text-[var(--text)] bg-[var(--surface)] hover:bg-[var(--surface-alt)] border border-[var(--border-strong)] hover:border-[var(--primary)] transition-all duration-200"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-[var(--text)] bg-[var(--surface)] hover:bg-[var(--surface-alt)] border border-[var(--border-strong)] hover:border-[var(--primary)] transition-all duration-300 hover:-translate-y-0.5"
                 >
                   <FileText className="w-4 h-4 text-[var(--primary)]" />
                   <span>Download Resume</span>
@@ -92,7 +92,7 @@ export const HomePage = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub Profile"
-                    className="p-2.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors"
+                    className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all hover:-translate-y-0.5"
                   >
                     <Github className="w-4 h-4" />
                   </a>
@@ -101,7 +101,7 @@ export const HomePage = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn Profile"
-                    className="p-2.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors"
+                    className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all hover:-translate-y-0.5"
                   >
                     <Linkedin className="w-4 h-4" />
                   </a>
@@ -109,27 +109,62 @@ export const HomePage = () => {
               </div>
             </div>
 
-            {/* Right Column - Developer Card Highlight */}
-            <div className="lg:col-span-4 flex justify-center">
-              <div className="relative w-full max-w-sm rounded-2xl bg-[var(--card)] border border-[var(--border)] p-6 shadow-sm">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-[var(--primary)] to-[var(--primary-hover)] text-white font-bold text-3xl flex items-center justify-center mb-5 shadow-xs">
-                  KS
-                </div>
-                <div className="space-y-3">
-                  <div className="space-y-1">
-                    <h3 className="font-bold text-lg text-[var(--text)]">Khushi Siddhapura</h3>
-                    <p className="text-xs text-[var(--primary)] font-medium">B.Tech IT, BVM Gujarat</p>
+            {/* Right Column - Aesthetic Curvy Portrait Display */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[340px] sm:max-w-[380px] pt-4 pb-2">
+                {/* Soft glowing ambient purple aura */}
+                <div className="absolute -inset-4 bg-gradient-to-tr from-[var(--primary)] via-purple-500/20 to-fuchsia-500/30 rounded-[3rem] blur-2xl opacity-60 dark:opacity-40 animate-pulse-glow pointer-events-none" />
+
+                {/* Curvy decorative backdrop outline */}
+                <div className="absolute -top-1 -right-1 w-full h-full rounded-[2.8rem] bg-gradient-to-br from-[var(--primary)]/15 to-transparent border border-[var(--primary-border)]/50 pointer-events-none" />
+
+                {/* Main Portrait Frame with smooth float animation */}
+                <div className="relative rounded-[2.5rem] bg-[var(--card)] border-2 border-[var(--primary-border)] overflow-hidden shadow-xl animate-float p-3">
+                  <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-b from-[var(--surface-alt)] to-[var(--surface)] aspect-[4/5] flex items-center justify-center group">
+                    <img
+                      src={profile?.profileImage?.url || '/khushi.png'}
+                      alt={profile?.name || 'Khushi Siddhapura'}
+                      onError={(e) => {
+                        if (e.currentTarget.src !== window.location.origin + '/khushi.svg') {
+                          e.currentTarget.src = '/khushi.svg';
+                        }
+                      }}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+
+                    {/* Subtle bottom gradient overlay for contrast */}
+                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[var(--card)] via-[var(--card)]/60 to-transparent" />
+
+                    {/* Bottom card info over photo */}
+                    <div className="absolute bottom-3 inset-x-3 p-3 rounded-2xl glass-panel border border-[var(--border)] shadow-xs">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="font-bold text-sm text-[var(--text)] leading-tight">
+                            {profile?.name || 'Khushi Siddhapura'}
+                          </h3>
+                          <p className="text-[11px] font-medium text-[var(--primary)] mt-0.5">
+                            B.Tech IT • BVM Gujarat
+                          </p>
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-[var(--primary-soft)] border border-[var(--primary-border)] text-[var(--primary)] flex items-center justify-center text-xs font-bold">
+                          KS
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                    Focused on full-stack web engineering, MERN architecture, relational databases, and practical user experience design.
-                  </p>
-                  <div className="pt-3 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--text-secondary)]">
-                    <span>Education</span>
-                    <span className="font-semibold text-[var(--text)]">BVM Engineering College</span>
+
+                  {/* Floating Glass Pill 1: Available status (Top-Left) */}
+                  <div className="absolute -top-2 -left-2 glass-panel px-3.5 py-1.5 rounded-full border border-[var(--primary-border)] shadow-md animate-float-reverse flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                    <span className="text-[11px] font-semibold text-[var(--text)]">Full Stack Dev</span>
                   </div>
-                  <div className="flex items-center justify-between text-xs text-[var(--text-secondary)]">
-                    <span>Location</span>
-                    <span className="font-semibold text-[var(--text)]">Gujarat, India</span>
+
+                  {/* Floating Glass Pill 2: Tech stack tags (Bottom-Right) */}
+                  <div className="absolute -bottom-2 -right-2 glass-panel px-3.5 py-2 rounded-2xl border border-[var(--primary-border)] shadow-md animate-float flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--primary)]">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>MERN Stack</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -169,42 +204,42 @@ export const HomePage = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2">
-                <div className="w-8 h-8 rounded-lg bg-[var(--surface-alt)] text-[var(--primary)] flex items-center justify-center font-bold text-sm">
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary-border)] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[var(--surface-alt)] border border-[var(--primary-border)] text-[var(--primary)] flex items-center justify-center font-bold text-sm shadow-2xs">
                   01
                 </div>
-                <h4 className="font-semibold text-sm text-[var(--text)]">Education at BVM</h4>
+                <h4 className="font-bold text-sm text-[var(--text)]">Education at BVM</h4>
                 <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                   Pursuing B.Tech in Information Technology at Birla Vishvakarma Mahavidyalaya (BVM), Gujarat.
                 </p>
               </div>
 
-              <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2">
-                <div className="w-8 h-8 rounded-lg bg-[var(--surface-alt)] text-[var(--primary)] flex items-center justify-center font-bold text-sm">
+              <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary-border)] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[var(--surface-alt)] border border-[var(--primary-border)] text-[var(--primary)] flex items-center justify-center font-bold text-sm shadow-2xs">
                   02
                 </div>
-                <h4 className="font-semibold text-sm text-[var(--text)]">Full-Stack Focus</h4>
+                <h4 className="font-bold text-sm text-[var(--text)]">Full-Stack Focus</h4>
                 <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                   React.js, Node.js, Express, MongoDB, PHP, and MySQL for robust, end-to-end digital solutions.
                 </p>
               </div>
 
-              <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2">
-                <div className="w-8 h-8 rounded-lg bg-[var(--surface-alt)] text-[var(--primary)] flex items-center justify-center font-bold text-sm">
+              <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary-border)] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[var(--surface-alt)] border border-[var(--primary-border)] text-[var(--primary)] flex items-center justify-center font-bold text-sm shadow-2xs">
                   03
                 </div>
-                <h4 className="font-semibold text-sm text-[var(--text)]">Practical Experience</h4>
+                <h4 className="font-bold text-sm text-[var(--text)]">Practical Experience</h4>
                 <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                   Web Development Intern at My Job Grow, actively contributing to modern web engineering workflows.
                 </p>
               </div>
 
-              <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2">
-                <div className="w-8 h-8 rounded-lg bg-[var(--surface-alt)] text-[var(--primary)] flex items-center justify-center font-bold text-sm">
+              <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary-border)] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[var(--surface-alt)] border border-[var(--primary-border)] text-[var(--primary)] flex items-center justify-center font-bold text-sm shadow-2xs">
                   04
                 </div>
-                <h4 className="font-semibold text-sm text-[var(--text)]">Competitions & UI/UX</h4>
+                <h4 className="font-bold text-sm text-[var(--text)]">Competitions & UI/UX</h4>
                 <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                   Awarded 2nd rank in Cracking the Code and top 3 in college Figma UI/UX design challenges.
                 </p>
@@ -259,7 +294,7 @@ export const HomePage = () => {
               {featuredProjects.map((project) => (
                 <article
                   key={project._id}
-                  className="group rounded-xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary-border)] hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                  className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary)] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden"
                 >
                   <div>
                     <div className="w-full h-48 bg-[var(--surface-alt)] relative overflow-hidden flex items-center justify-center border-b border-[var(--border)]">
@@ -267,7 +302,7 @@ export const HomePage = () => {
                         <img
                           src={project.coverImage.url}
                           alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
                         <div className="text-center p-6 space-y-2">
@@ -277,7 +312,7 @@ export const HomePage = () => {
                           </span>
                         </div>
                       )}
-                      <span className="absolute top-3 right-3 text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-md bg-[var(--card)]/90 backdrop-blur-xs text-[var(--primary)] border border-[var(--border)] shadow-2xs">
+                      <span className="absolute top-3 right-3 text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-[var(--card)]/90 backdrop-blur-xs text-[var(--primary)] border border-[var(--primary-border)] shadow-2xs">
                         {project.category}
                       </span>
                     </div>

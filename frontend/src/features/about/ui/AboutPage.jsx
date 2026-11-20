@@ -23,18 +23,35 @@ export const AboutPage = () => {
   return (
     <div className="w-full py-12 md:py-20">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Developer Profile</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-8 space-y-4">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Developer Profile</span>
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-[var(--text)] tracking-tight">
+              About Khushi Siddhapura
+            </h1>
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+              {profile?.aboutIntroduction ||
+                'A passionate Information Technology student interested in full-stack web development, building practical applications, exploring new technologies, and creating useful digital experiences.'}
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[var(--text)] tracking-tight">
-            About Khushi Siddhapura
-          </h1>
-          <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-            {profile?.aboutIntroduction ||
-              'A passionate Information Technology student interested in full-stack web development, building practical applications, exploring new technologies, and creating useful digital experiences.'}
-          </p>
+
+          <div className="lg:col-span-4 flex justify-center lg:justify-end">
+            <div className="relative w-48 sm:w-56 aspect-[4/5] rounded-[2rem] border-2 border-[var(--primary-border)] overflow-hidden shadow-lg p-2 bg-[var(--card)] animate-float">
+              <img
+                src={profile?.profileImage?.url || '/khushi.png'}
+                alt={profile?.name || 'Khushi Siddhapura'}
+                onError={(e) => {
+                  if (e.currentTarget.src !== window.location.origin + '/khushi.svg') {
+                    e.currentTarget.src = '/khushi.svg';
+                  }
+                }}
+                className="w-full h-full object-cover object-top rounded-[1.5rem]"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] space-y-4">
