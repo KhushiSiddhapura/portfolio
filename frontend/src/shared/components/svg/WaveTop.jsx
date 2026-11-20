@@ -29,3 +29,4 @@ export const WaveTop = ({
 };
 
 export default WaveTop;
+

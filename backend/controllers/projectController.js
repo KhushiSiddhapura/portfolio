@@ -319,3 +319,4 @@ export const deleteProject = asyncHandler(async (req, res) => {
     message: 'Project deleted successfully',
   });
 });
+

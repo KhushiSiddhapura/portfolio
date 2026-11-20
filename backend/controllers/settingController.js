@@ -35,3 +35,4 @@ export const updateSettings = asyncHandler(async (req, res) => {
     data: settings,
   });
 });
+

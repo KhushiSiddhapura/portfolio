@@ -125,3 +125,4 @@ projectSchema.index({ title: 'text', shortDescription: 'text', fullDescription: 
 
 const Project = mongoose.model('Project', projectSchema);
 export default Project;
+

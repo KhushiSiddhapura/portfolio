@@ -30,3 +30,4 @@ router.get('/settings', getSettings);
 router.post('/messages', createMessage);
 
 export default router;
+

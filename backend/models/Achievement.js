@@ -38,3 +38,4 @@ achievementSchema.index({ displayOrder: 1, createdAt: -1 });
 
 const Achievement = mongoose.model('Achievement', achievementSchema);
 export default Achievement;
+

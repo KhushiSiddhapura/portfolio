@@ -56,3 +56,4 @@ export const getResume = asyncHandler(async (req, res) => {
     },
   });
 });
+

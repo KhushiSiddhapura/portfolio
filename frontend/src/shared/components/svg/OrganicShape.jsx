@@ -26,3 +26,4 @@ export const OrganicShape = ({
 };
 
 export default OrganicShape;
+

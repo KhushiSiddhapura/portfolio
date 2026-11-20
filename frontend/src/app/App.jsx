@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { router } from './router';
-import { checkAuth } from '../features/auth/authSlice';
+import { checkAuth } from '../features/auth';
 import { ThemeProvider } from '../context/ThemeContext';
 
 export const App = () => {
@@ -36,3 +36,4 @@ export const App = () => {
 };
 
 export default App;
+

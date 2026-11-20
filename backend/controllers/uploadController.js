@@ -95,3 +95,4 @@ export const uploadResumeFile = asyncHandler(async (req, res) => {
     },
   });
 });
+

@@ -29,3 +29,4 @@ export const WaveBottom = ({
 };
 
 export default WaveBottom;
+

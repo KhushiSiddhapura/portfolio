@@ -88,3 +88,4 @@ export const logout = asyncHandler(async (req, res) => {
     message: 'User logged out successfully',
   });
 });
+

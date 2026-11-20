@@ -92,3 +92,4 @@ router.post('/upload/image', uploadImage.single('image'), uploadImageFile);
 router.post('/resume', uploadDocument.single('resume'), uploadResumeFile);
 
 export default router;
+

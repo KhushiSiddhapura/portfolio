@@ -55,3 +55,4 @@ export const deleteFromCloudinary = async (publicId, resourceType = 'image') => 
 };
 
 export default cloudinary;
+

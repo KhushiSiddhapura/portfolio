@@ -33,3 +33,4 @@ export const SectionTransition = ({
 };
 
 export default SectionTransition;
+

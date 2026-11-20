@@ -37,3 +37,4 @@ export const CurvedDivider = ({
 };
 
 export default CurvedDivider;
+

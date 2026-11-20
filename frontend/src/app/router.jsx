@@ -6,32 +6,32 @@ import { useSelector } from 'react-redux';
 import PublicLayout from '../layouts/PublicLayout';
 import AdminLayout from '../layouts/AdminLayout';
 
-// Public Feature Pages
-import HomePage from '../features/home/HomePage';
-import AboutPage from '../features/about/AboutPage';
-import ProjectsPage from '../features/projects/ProjectsPage';
-import ProjectDetailPage from '../features/projects/ProjectDetailPage';
-import ExperiencePage from '../features/experience/ExperiencePage';
-import AchievementsPage from '../features/achievements/AchievementsPage';
-import ContactPage from '../features/contact/ContactPage';
-import ResumePage from '../features/resume/ResumePage';
+// Public Feature Pages (from feature 4-layer UI modules)
+import HomePage from '../features/home/ui/HomePage';
+import AboutPage from '../features/about/ui/AboutPage';
+import ProjectsPage from '../features/projects/ui/ProjectsPage';
+import ProjectDetailPage from '../features/projects/ui/ProjectDetailPage';
+import ExperiencePage from '../features/experience/ui/ExperiencePage';
+import AchievementsPage from '../features/achievements/ui/AchievementsPage';
+import ContactPage from '../features/contact/ui/ContactPage';
+import ResumePage from '../features/resume/ui/ResumePage';
 
-// Admin Pages
-import AdminLoginPage from '../features/admin/auth/AdminLoginPage';
-import DashboardPage from '../features/admin/dashboard/DashboardPage';
-import ProfileManagementPage from '../features/admin/profile/ProfilePage';
-import ProjectsListPage from '../features/admin/projects/ProjectsListPage';
-import ProjectBuilderPage from '../features/admin/projects/ProjectBuilderPage';
-import SkillsManagementPage from '../features/admin/skills/SkillsPage';
-import ExperienceManagementPage from '../features/admin/experience/ExperiencePage';
-import AchievementsManagementPage from '../features/admin/achievements/AchievementsPage';
-import ResumeManagementPage from '../features/admin/resume/ResumePage';
-import MessagesManagementPage from '../features/admin/messages/MessagesPage';
-import WebsiteSettingsPage from '../features/admin/settings/SettingsPage';
+// Admin Feature Pages (from admin feature 4-layer UI modules)
+import AdminLoginPage from '../features/admin/auth/ui/AdminLoginPage';
+import DashboardPage from '../features/admin/dashboard/ui/DashboardPage';
+import ProfileManagementPage from '../features/admin/profile/ui/ProfilePage';
+import ProjectsListPage from '../features/admin/projects/ui/ProjectsListPage';
+import ProjectBuilderPage from '../features/admin/projects/ui/ProjectBuilderPage';
+import SkillsManagementPage from '../features/admin/skills/ui/SkillsPage';
+import ExperienceManagementPage from '../features/admin/experience/ui/ExperiencePage';
+import AchievementsManagementPage from '../features/admin/achievements/ui/AchievementsPage';
+import ResumeManagementPage from '../features/admin/resume/ui/ResumePage';
+import MessagesManagementPage from '../features/admin/messages/ui/MessagesPage';
+import WebsiteSettingsPage from '../features/admin/settings/ui/SettingsPage';
 
 // Protected Route Guard for Admin Routes
 const ProtectedAdminRoute = () => {
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   if (!isAuthenticated) {
     return <Navigate to="/admin/login" replace />;
