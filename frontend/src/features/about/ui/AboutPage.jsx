@@ -41,7 +41,7 @@ export const AboutPage = () => {
           <div className="lg:col-span-4 flex justify-center lg:justify-end">
             <div className="relative w-48 sm:w-56 aspect-[4/5] flex items-center justify-center animate-float">
               <img
-                src={profile?.profileImage?.url || '/khushi.png'}
+                src={profile?.profileImage?.url || '../../'}
                 alt={profile?.name || 'Khushi Siddhapura'}
                 className="w-full h-full object-contain drop-shadow-xl"
               />

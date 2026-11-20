@@ -51,7 +51,7 @@ export const HomePage = () => {
         {/* Center Stage Container with Overflow Guard */}
         <div className="relative max-w-[1100px] mx-auto px-4 min-h-[400px] sm:min-h-[460px] md:min-h-[500px] flex flex-col items-center justify-end z-10 select-none overflow-hidden">
           {/* Toned Down, Responsive Background Typography */}
-          <div className="absolute top-[15%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-full overflow-hidden text-center pointer-events-none select-none z-0 px-4">
+          <div className="absolute top-[24%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-full overflow-hidden text-center pointer-events-none select-none z-0 px-4">
             <h1
               className="font-black tracking-tight uppercase leading-none select-none whitespace-nowrap bg-gradient-to-r from-purple-500/25 via-violet-400/20 to-indigo-500/25 dark:from-purple-400/15 dark:via-fuchsia-400/15 dark:to-indigo-400/15 bg-clip-text text-transparent"
               style={{ fontSize: 'clamp(1.5rem, 8vw, 7.5rem)' }}
@@ -61,16 +61,24 @@ export const HomePage = () => {
           </div>
 
           {/* Central High-Res Portrait Card of Khushi */}
-          <div className="relative z-10 flex flex-col items-center">
-            {/* Soft Ambient Backdrop Aura */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-[var(--primary)]/20 via-purple-500/10 to-transparent rounded-full blur-2xl opacity-60 pointer-events-none" />
+          <div className="relative z-10 flex flex-col items-center justify-end w-full">
 
-            <img
-              src="/khushi.png"
-              alt={profile?.name || 'Khushi Siddhapura'}
-              className="relative z-10 max-h-[320px] sm:max-h-[480px] md:max-h-[480px] lg:max-h-[520px] w-auto object-contain select-none pointer-events-none drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
-            />
-          </div>
+      {/* Ambient Aura */}
+      <div className="absolute bottom-10 w-[75%] h-[65%]
+        bg-gradient-to-tr from-[var(--primary)]/20
+        via-purple-500/10 to-transparent rounded-full
+        blur-3xl opacity-60 pointer-events-none"
+      />
+
+      <img
+        src="/khushi.png"
+        alt={profile?.name || 'Khushi Siddhapura'}
+        className="relative z-10 translate-y-20 sm:translate-y-24 md:translate-y-28
+  h-[380px] sm:h-[480px] md:h-[500px] lg:h-[560px]
+  w-auto max-w-full object-contain object-bottom
+  select-none pointer-events-none"
+      />
+    </div>
         </div>
         {/* Sweeping Visible Long Wave at the Bottom */}
         <div className="absolute bottom-0 inset-x-0 z-20">

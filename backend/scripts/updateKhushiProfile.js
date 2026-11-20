@@ -28,24 +28,34 @@ const updateProfileData = async () => {
           developerJourney:
             'My journey into software development started with a fascination for building functional, responsive digital applications. At BVM Engineering College, I deepened my foundation in computer science, database systems, and web architecture. From building the NCC management portal to developing responsive client solutions like Rangila Resto and participating in hackathons, I focus on writing clean, scalable, and maintainable code.',
           'profileImage.url': '/khushi.png',
+          resumeSummary:
+            'I am a Full Stack Developer and 2nd year B.Tech Information Technology student at Birla Vishvakarma Mahavidyalaya (CGPA: 8.52/10). Strong frontend expertise in React.js, JavaScript, and Tailwind CSS, complemented by backend engineering using Node.js, Express, MongoDB, and MySQL. Passionate about building scalable, secure, and user-centric digital experiences with clean architecture and modern development standards.',
+          resumeActivities: [
+            'Active volunteer participating in NSS (National Service Scheme).',
+            'Attended live college workshops on MERN stack & web applications security.',
+            'Personal interests: Reading, Travelling, and Music.',
+          ],
           education: [
             {
               degree: 'B.Tech in Information Technology',
               institution: 'Birla Vishvakarma Mahavidyalaya (BVM), Gujarat',
               duration: '2025 – 2029',
-              description: 'CGPA: 8.52 / 10 • Core focus on Data Structures, Database Systems, Web Engineering, and Network Security.',
+              score: 'CGPA: 8.52 / 10',
+              description: 'Core focus on Data Structures, Database Systems, Web Engineering, and Network Security.',
             },
             {
               degree: '12th (Senior Secondary Examination)',
               institution: 'GSEB Board, Gujarat',
               duration: '2025',
-              description: 'Score: 84% • Focused on Mathematics, Physics, and Computer Science.',
+              score: 'Score: 84%',
+              description: 'Focused on Mathematics, Physics, and Computer Science.',
             },
             {
               degree: '10th (Secondary Examination)',
               institution: 'GSEB Board, Gujarat',
               duration: '2023',
-              description: 'Score: 92% • Foundation in Science and Mathematics.',
+              score: 'Score: 92%',
+              description: 'Foundation in Science and Mathematics.',
             },
           ],
           socialLinks: {

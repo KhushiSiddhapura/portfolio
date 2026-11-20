@@ -8,13 +8,21 @@ export const useResume = () => {
   const fetchResumeData = useCallback(async () => {
     setData((prev) => ({ ...prev, loading: true, error: null }));
     try {
-      const [profile, resumeInfo] = await Promise.all([
+      const [profile, resumeInfo, experience, skills, projects, achievements] = await Promise.all([
         resumeApi.getProfile().catch(() => null),
         resumeApi.getResume().catch(() => null),
+        resumeApi.getExperience().catch(() => []),
+        resumeApi.getSkills().catch(() => []),
+        resumeApi.getProjects().catch(() => []),
+        resumeApi.getAchievements().catch(() => []),
       ]);
       setData({
         profile,
         resumeInfo,
+        experience: Array.isArray(experience) ? experience : [],
+        skills: Array.isArray(skills) ? skills : [],
+        projects: Array.isArray(projects) ? projects : [],
+        achievements: Array.isArray(achievements) ? achievements : [],
         loading: false,
         error: null,
       });

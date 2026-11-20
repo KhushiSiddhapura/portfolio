@@ -65,7 +65,11 @@ const profileSchema = new mongoose.Schema(
         },
         duration: {
           type: String,
-          default: 'Pursuing',
+          default: '2025 – 2029',
+        },
+        score: {
+          type: String,
+          default: 'CGPA: 8.52 / 10',
         },
         description: {
           type: String,
@@ -73,6 +77,19 @@ const profileSchema = new mongoose.Schema(
         },
       },
     ],
+    resumeSummary: {
+      type: String,
+      default:
+        'I am a Full Stack Developer and 2nd year B.Tech Information Technology student at Birla Vishvakarma Mahavidyalaya (CGPA: 8.52/10). Strong frontend expertise in React.js, JavaScript, and Tailwind CSS, complemented by backend engineering using Node.js, Express, MongoDB, and MySQL. Passionate about building scalable, secure, and user-centric digital experiences with clean architecture and modern development standards.',
+    },
+    resumeActivities: {
+      type: [String],
+      default: [
+        'Active volunteer participating in NSS (National Service Scheme).',
+        'Attended live college workshops on MERN stack & web applications security.',
+        'Personal interests: Reading, Travelling, and Music.',
+      ],
+    },
     technicalInterests: {
       type: [String],
       default: ['Full-Stack Web Development', 'MERN Stack Architecture', 'RESTful API Engineering', 'UI/UX & Design Systems', 'Database Modeling'],
