@@ -14,6 +14,7 @@ import {
 import useResume from '../hook/useResume';
 import Loader from '../../../shared/ui/Loader';
 import Button from '../../../shared/ui/Button';
+import ThemeToggle from '../../../shared/components/ThemeToggle';
 
 export const ResumePage = () => {
   const { profile, loading } = useResume();
@@ -50,20 +51,23 @@ export const ResumePage = () => {
   ];
 
   return (
-    <div className="w-full py-10 md:py-16">
-      <div className="max-w-[920px] mx-auto px-4 sm:px-6 space-y-8">
+    <div className="w-full min-h-screen py-8 sm:py-12 md:py-16 bg-zinc-100/80 dark:bg-zinc-950 transition-colors duration-200">
+      <div className="max-w-[920px] mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
         {/* Top Control Bar (Hidden during print) */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-xs print:hidden">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 shadow-sm print:hidden">
           <div className="space-y-1">
-            <h1 className="text-xl font-bold text-[var(--text)] flex items-center gap-2">
+            <h1 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
               <span>Khushi S Siddhapura — Curriculum Vitae</span>
             </h1>
-            <p className="text-xs text-[var(--text-muted)]">
-              Two-column professional resume layout • Print or export to PDF
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">
+              Two-column professional resume layout • Optimized for Light & Dark themes
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <div className="mr-1">
+              <ThemeToggle />
+            </div>
             <Button
               variant="outline"
               size="sm"
@@ -78,20 +82,20 @@ export const ResumePage = () => {
               icon={Download}
               onClick={handlePrint}
             >
-              Download PDF Resume
+              Download PDF
             </Button>
           </div>
         </div>
 
         {/* ================= RESUME A4 SHEET ================= */}
-        <div className="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 p-8 sm:p-12 rounded-2xl border border-[var(--border)] shadow-xl print:p-0 print:border-none print:shadow-none print:bg-white print:text-black">
+        <div className="bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 p-8 sm:p-12 rounded-2xl border border-zinc-200/90 dark:border-zinc-800 shadow-xl print:p-0 print:border-none print:shadow-none print:bg-white print:text-black">
           {/* 1. HEADER SECTION (Two parts: Info on Left, Circular Photo on Right) */}
           <header className="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-zinc-200 dark:border-zinc-800 print:border-zinc-300">
             <div className="space-y-2 flex-1">
               <h1 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-zinc-900 dark:text-white print:text-black font-sans">
                 Khushi S Siddhapura
               </h1>
-              <h2 className="text-lg font-bold text-[var(--primary)] dark:text-violet-400 print:text-[#7C3AED]">
+              <h2 className="text-lg font-bold text-[#7C3AED] dark:text-violet-400 print:text-[#7C3AED]">
                 Full Stack Developer
               </h2>
 
@@ -99,17 +103,17 @@ export const ResumePage = () => {
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-zinc-600 dark:text-zinc-300 print:text-zinc-700 pt-1">
                 <a
                   href="tel:+918200886093"
-                  className="flex items-center gap-1.5 hover:text-[var(--primary)]"
+                  className="flex items-center gap-1.5 hover:text-[#7C3AED] transition-colors"
                 >
-                  <Phone className="w-3.5 h-3.5 text-[var(--primary)]" />
+                  <Phone className="w-3.5 h-3.5 text-[#7C3AED] dark:text-violet-400" />
                   <span>+91 8200886093</span>
                 </a>
 
                 <a
                   href="mailto:khushisiddhapura2010@gmail.com"
-                  className="flex items-center gap-1.5 hover:text-[var(--primary)]"
+                  className="flex items-center gap-1.5 hover:text-[#7C3AED] transition-colors"
                 >
-                  <Mail className="w-3.5 h-3.5 text-[var(--primary)]" />
+                  <Mail className="w-3.5 h-3.5 text-[#7C3AED] dark:text-violet-400" />
                   <span>khushisiddhapura2010@gmail.com</span>
                 </a>
 
@@ -117,9 +121,9 @@ export const ResumePage = () => {
                   href="https://linkedin.com/in/khushi-siddhapura-7247a0397"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-[var(--primary)]"
+                  className="flex items-center gap-1.5 hover:text-[#7C3AED] transition-colors"
                 >
-                  <Linkedin className="w-3.5 h-3.5 text-[var(--primary)]" />
+                  <Linkedin className="w-3.5 h-3.5 text-[#7C3AED] dark:text-violet-400" />
                   <span>linkedin.com/in/khushi-siddhapura</span>
                 </a>
 
@@ -127,14 +131,14 @@ export const ResumePage = () => {
                   href="https://github.com/KhushiSiddhapura"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-[var(--primary)]"
+                  className="flex items-center gap-1.5 hover:text-[#7C3AED] transition-colors"
                 >
-                  <Github className="w-3.5 h-3.5 text-[var(--primary)]" />
+                  <Github className="w-3.5 h-3.5 text-[#7C3AED] dark:text-violet-400" />
                   <span>github.com/KhushiSiddhapura</span>
                 </a>
 
                 <div className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[var(--primary)]" />
+                  <MapPin className="w-3.5 h-3.5 text-[#7C3AED] dark:text-violet-400" />
                   <span>Anand, Gujarat</span>
                 </div>
               </div>
@@ -142,15 +146,10 @@ export const ResumePage = () => {
 
             {/* Circular Portrait Photo (Top Right) */}
             <div className="shrink-0 self-center sm:self-auto">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-[var(--primary)] p-0.5 shadow-sm overflow-hidden bg-zinc-100">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-[#7C3AED] p-0.5 shadow-sm overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                 <img
-                  src="/khushi.jpg"
+                  src="/khushi.png"
                   alt="Khushi S Siddhapura"
-                  onError={(e) => {
-                    if (e.currentTarget.src !== window.location.origin + '/khushi.png') {
-                      e.currentTarget.src = '/khushi.png';
-                    }
-                  }}
                   className="w-full h-full object-cover object-top rounded-full"
                 />
               </div>

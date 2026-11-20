@@ -39,11 +39,11 @@ export const AboutPage = () => {
           </div>
 
           <div className="lg:col-span-4 flex justify-center lg:justify-end">
-            <div className="relative w-48 sm:w-56 aspect-[4/5] rounded-[2rem] border-2 border-[var(--primary-border)] overflow-hidden shadow-lg p-2 bg-[var(--card)] animate-float">
+            <div className="relative w-48 sm:w-56 aspect-[4/5] flex items-center justify-center animate-float">
               <img
-                src={profile?.profileImage?.url || '/khushi.jpg'}
+                src={profile?.profileImage?.url || '/khushi.png'}
                 alt={profile?.name || 'Khushi Siddhapura'}
-                className="w-full h-full object-cover object-top rounded-[1.5rem]"
+                className="w-full h-full object-contain drop-shadow-xl"
               />
             </div>
           </div>

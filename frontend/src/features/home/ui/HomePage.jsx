@@ -54,123 +54,24 @@ export const HomePage = () => {
           <div className="absolute top-[15%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-full overflow-hidden text-center pointer-events-none select-none z-0 px-4">
             <h1
               className="font-black tracking-tight uppercase leading-none select-none whitespace-nowrap bg-gradient-to-r from-purple-500/25 via-violet-400/20 to-indigo-500/25 dark:from-purple-400/15 dark:via-fuchsia-400/15 dark:to-indigo-400/15 bg-clip-text text-transparent"
-              style={{ fontSize: 'clamp(2.8rem, 8vw, 7.5rem)' }}
+              style={{ fontSize: 'clamp(1.5rem, 8vw, 7.5rem)' }}
             >
               KHUSHI SIDDHAPURA
             </h1>
           </div>
 
-          {/* Floating Subtle Side Tech Badges (safely positioned within 1100px boundary, hidden on mobile/tablet) */}
-          <div className="absolute inset-0 pointer-events-none z-20 hidden lg:block">
-            {/* Left Badges */}
-            <div className="absolute left-4 xl:left-8 top-[20%] animate-float pointer-events-auto">
-              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-amber-500 shadow-sm hover:border-[var(--primary)] transition-colors">
-                <Code2 className="w-4.5 h-4.5" />
-              </div>
-            </div>
-            <div className="absolute left-1 xl:left-4 top-[48%] animate-float-reverse pointer-events-auto">
-              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-orange-500 shadow-sm hover:border-[var(--primary)] transition-colors">
-                <Flame className="w-4.5 h-4.5" />
-              </div>
-            </div>
-            <div className="absolute left-5 xl:left-10 top-[72%] animate-float pointer-events-auto">
-              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-[var(--primary)] shadow-sm hover:border-[var(--primary)] transition-colors">
-                <Terminal className="w-4.5 h-4.5" />
-              </div>
-            </div>
-
-            {/* Right Badges */}
-            <div className="absolute right-4 xl:right-8 top-[20%] animate-float-reverse pointer-events-auto">
-              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-indigo-400 shadow-sm hover:border-[var(--primary)] transition-colors">
-                <Layers className="w-4.5 h-4.5" />
-              </div>
-            </div>
-            <div className="absolute right-1 xl:right-4 top-[48%] animate-float pointer-events-auto">
-              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-emerald-400 shadow-sm hover:border-[var(--primary)] transition-colors">
-                <Database className="w-4.5 h-4.5" />
-              </div>
-            </div>
-            <div className="absolute right-5 xl:right-10 top-[72%] animate-float-reverse pointer-events-auto">
-              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-purple-400 shadow-sm hover:border-[var(--primary)] transition-colors">
-                <Sparkles className="w-4.5 h-4.5" />
-              </div>
-            </div>
-          </div>
-
           {/* Central High-Res Portrait Card of Khushi */}
-          <div className="relative z-10 flex flex-col items-center mt-2">
+          <div className="relative z-10 flex flex-col items-center">
             {/* Soft Ambient Backdrop Aura */}
-            <div className="absolute -inset-3 bg-gradient-to-tr from-[var(--primary)]/20 via-purple-500/10 to-transparent rounded-t-[3.5rem] blur-xl opacity-75 pointer-events-none" />
+            <div className="absolute -inset-4 bg-gradient-to-tr from-[var(--primary)]/20 via-purple-500/10 to-transparent rounded-full blur-2xl opacity-60 pointer-events-none" />
 
-            <div className="relative w-56 sm:w-68 md:w-76 lg:w-80 max-w-[85vw] aspect-[4/5] rounded-t-[2.5rem] sm:rounded-t-[3.5rem] overflow-hidden border-t-2 border-x-2 border-[var(--primary-border)]/70 dark:border-purple-500/30 shadow-2xl bg-gradient-to-b from-[var(--surface-alt)]/60 to-[var(--surface)] group">
-              <img
-                src={profile?.profileImage?.url || '/khushi.jpg'}
-                alt={profile?.name || 'Khushi Siddhapura'}
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              />
-
-              {/* Bottom soft gradient fade into curve */}
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[var(--background)]/85 via-[var(--background)]/30 to-transparent pointer-events-none" />
-            </div>
+            <img
+              src="/khushi.png"
+              alt={profile?.name || 'Khushi Siddhapura'}
+              className="relative z-10 max-h-[360px] sm:max-h-[420px] md:max-h-[480px] lg:max-h-[520px] w-auto object-contain select-none pointer-events-none drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+            />
           </div>
         </div>
-
-        {/* Intro Tagline & CTA Action Bar below the center visual */}
-        <div className="relative max-w-[800px] mx-auto px-4 text-center mt-6 z-20 space-y-4">
-          <div className="space-y-1">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--text)] tracking-tight">
-              Khushi Siddhapura
-            </h2>
-            <p className="text-xs sm:text-sm font-semibold text-[var(--primary)]">
-              Full Stack Developer • B.Tech Information Technology @ BVM
-            </p>
-          </div>
-
-          <p className="text-xs sm:text-sm text-[var(--text-secondary)] max-w-xl mx-auto leading-relaxed">
-            {profile?.heroIntroduction ||
-              'Turning ideas into practical digital experiences. Building scalable web applications across the MERN stack with clean architecture and modern UX.'}
-          </p>
-
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm text-white bg-[var(--primary)] hover:bg-[var(--primary-hover)] shadow-md hover:shadow-lg transition-all active:scale-95"
-            >
-              <span>Explore Projects</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-
-            <Link
-              to="/resume"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm text-[var(--text)] bg-[var(--card)] hover:bg-[var(--surface-alt)] border border-[var(--border-strong)] hover:border-[var(--primary)] transition-all shadow-xs"
-            >
-              <FileText className="w-4 h-4 text-[var(--primary)]" />
-              <span>Resume</span>
-            </Link>
-
-            <div className="flex items-center gap-2 pl-2">
-              <a
-                href={profile?.socialLinks?.github || 'https://github.com/KhushiSiddhapura'}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub Profile"
-                className="p-2.5 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href={profile?.socialLinks?.linkedin || 'https://www.linkedin.com/in/khushi-siddhapura-7247a0397'}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn Profile"
-                className="p-2.5 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-
         {/* Sweeping Visible Long Wave at the Bottom */}
         <div className="absolute bottom-0 inset-x-0 z-20">
           <VisibleLongWave fill="var(--surface)" height="84px" accentColor="#7C3AED" secondaryColor="#8B5CF6" />

@@ -27,7 +27,7 @@ const updateProfileData = async () => {
             '2nd year B.Tech Information Technology student at Birla Vishvakarma Mahavidyalaya with an excellent academic record (CGPA 8.52/10) and keen interest in full-stack web engineering, web applications security, and practical digital experiences.',
           developerJourney:
             'My journey into software development started with a fascination for building functional, responsive digital applications. At BVM Engineering College, I deepened my foundation in computer science, database systems, and web architecture. From building the NCC management portal to developing responsive client solutions like Rangila Resto and participating in hackathons, I focus on writing clean, scalable, and maintainable code.',
-          'profileImage.url': '/khushi.jpg',
+          'profileImage.url': '/khushi.png',
           education: [
             {
               degree: 'B.Tech in Information Technology',

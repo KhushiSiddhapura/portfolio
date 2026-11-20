@@ -80,16 +80,6 @@ export const Navbar = () => {
 
         {/* Action Controls: Language/Globe, Theme Toggle & Resume Button */}
         <div className="hidden md:flex items-center gap-2 lg:gap-2.5 shrink-0">
-          {/* Language / Globe indicator button */}
-          <button
-            type="button"
-            className="flex items-center gap-1 px-2 py-1.5 rounded-full text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition-colors focus:outline-none border border-transparent hover:border-[var(--border)]"
-            title="Language: English (US)"
-            aria-label="Language options"
-          >
-            <Globe className="w-3.5 h-3.5 text-[var(--text-muted)]" />
-            <span className="text-[11px] font-semibold tracking-wider">EN</span>
-          </button>
 
           <ThemeToggle />
 
