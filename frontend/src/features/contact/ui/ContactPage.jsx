@@ -4,7 +4,7 @@ import useContact from '../hook/useContact';
 import Button from '../../../shared/ui/Button';
 
 export const ContactPage = () => {
-  const { form, setForm, loading, handleSubmit } = useContact();
+  const { register, handleSubmit, errors, loading } = useContact();
 
   return (
     <div className="w-full py-12 md:py-20">
@@ -99,12 +99,13 @@ export const ContactPage = () => {
                   </label>
                   <input
                     type="text"
-                    required
                     placeholder="Jane Doe"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    {...register('name', { required: 'Name is required' })}
                     className="w-full rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm px-3.5 py-2.5 text-[var(--text)] focus:outline-none focus:border-[var(--primary)]"
                   />
+                  {errors.name && (
+                    <span className="text-[11px] text-red-500 mt-1 block">{errors.name.message}</span>
+                  )}
                 </div>
 
                 <div>
@@ -113,12 +114,19 @@ export const ContactPage = () => {
                   </label>
                   <input
                     type="email"
-                    required
                     placeholder="jane@example.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    {...register('email', {
+                      required: 'Email is required',
+                      pattern: {
+                        value: /^\S+@\S+$/i,
+                        message: 'Invalid email address',
+                      },
+                    })}
                     className="w-full rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm px-3.5 py-2.5 text-[var(--text)] focus:outline-none focus:border-[var(--primary)]"
                   />
+                  {errors.email && (
+                    <span className="text-[11px] text-red-500 mt-1 block">{errors.email.message}</span>
+                  )}
                 </div>
               </div>
 
@@ -129,8 +137,7 @@ export const ContactPage = () => {
                 <input
                   type="text"
                   placeholder="Internship / Full Stack Project"
-                  value={form.subject}
-                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  {...register('subject')}
                   className="w-full rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm px-3.5 py-2.5 text-[var(--text)] focus:outline-none focus:border-[var(--primary)]"
                 />
               </div>
@@ -141,12 +148,13 @@ export const ContactPage = () => {
                 </label>
                 <textarea
                   rows={5}
-                  required
                   placeholder="Share details of your inquiry or message..."
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  {...register('message', { required: 'Message is required' })}
                   className="w-full rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm px-3.5 py-2.5 text-[var(--text)] focus:outline-none focus:border-[var(--primary)] resize-y"
                 />
+                {errors.message && (
+                  <span className="text-[11px] text-red-500 mt-1 block">{errors.message.message}</span>
+                )}
               </div>
 
               <Button

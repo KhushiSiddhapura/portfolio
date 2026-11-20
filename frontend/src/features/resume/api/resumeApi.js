@@ -12,3 +12,4 @@ export const resumeApi = {
 };
 
 export default resumeApi;
+

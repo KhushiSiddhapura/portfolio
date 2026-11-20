@@ -23,3 +23,4 @@ export const initialProjectDetailState = {
   loading: true,
   error: null,
 };
+

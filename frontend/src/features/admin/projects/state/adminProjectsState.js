@@ -23,3 +23,4 @@ export const initialProjectBuilderSettings = {
   status: 'draft',
   featured: false,
 };
+

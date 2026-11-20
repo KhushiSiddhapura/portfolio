@@ -16,3 +16,4 @@ export const adminMessagesApi = {
 };
 
 export default adminMessagesApi;
+

@@ -14,3 +14,4 @@ export const adminResumeApi = {
 };
 
 export default adminResumeApi;
+

@@ -12,3 +12,4 @@ export const initialSkillForm = {
   proficiency: 80,
   isVisible: true,
 };
+

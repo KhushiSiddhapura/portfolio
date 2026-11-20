@@ -4,3 +4,4 @@ export const initialAdminResumeState = {
   uploading: false,
   error: null,
 };
+

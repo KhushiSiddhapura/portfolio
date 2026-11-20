@@ -8,3 +8,4 @@ export const adminAuthApi = {
 };
 
 export default adminAuthApi;
+

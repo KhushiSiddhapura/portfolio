@@ -95,3 +95,4 @@ export const ResumeManagementPage = () => {
 };
 
 export default ResumeManagementPage;
+

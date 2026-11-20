@@ -4,3 +4,4 @@ export const initialResumeState = {
   loading: true,
   error: null,
 };
+

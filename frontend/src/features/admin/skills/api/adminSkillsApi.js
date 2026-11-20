@@ -20,3 +20,4 @@ export const adminSkillsApi = {
 };
 
 export default adminSkillsApi;
+

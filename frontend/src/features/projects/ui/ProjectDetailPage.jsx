@@ -231,3 +231,4 @@ export const ProjectDetailPage = () => {
 };
 
 export default ProjectDetailPage;
+

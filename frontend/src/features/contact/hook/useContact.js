@@ -1,38 +1,36 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import contactApi from '../api/contactApi';
 import { initialContactFormState } from '../state/contactState';
 
 export const useContact = () => {
-  const [form, setForm] = useState(initialContactFormState);
-  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: initialContactFormState,
+  });
 
-  const handleSubmit = async (e) => {
-    if (e && e.preventDefault) e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      toast.error('Please complete all required fields.');
-      return false;
-    }
-
-    setLoading(true);
+  const onSend = async (data) => {
     try {
-      const res = await contactApi.sendMessage(form);
+      const res = await contactApi.sendMessage(data);
       toast.success(res.message || 'Message sent successfully!');
-      setForm(initialContactFormState);
+      reset();
       return true;
     } catch (err) {
       toast.error(err.response?.data?.message || 'Failed to send message. Please try again.');
       return false;
-    } finally {
-      setLoading(false);
     }
   };
 
   return {
-    form,
-    setForm,
-    loading,
-    handleSubmit,
+    register,
+    handleSubmit: handleSubmit(onSend),
+    errors,
+    loading: isSubmitting,
+    reset,
   };
 };
 

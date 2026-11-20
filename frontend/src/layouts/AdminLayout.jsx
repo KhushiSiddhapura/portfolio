@@ -18,7 +18,7 @@ import {
   ChevronRight,
   Shield,
 } from 'lucide-react';
-import { logoutAdmin } from '../features/auth';
+import { logoutAdmin } from '../features/auth/state/authSlice';
 import ThemeToggle from '../shared/components/ThemeToggle';
 
 export const AdminLayout = () => {

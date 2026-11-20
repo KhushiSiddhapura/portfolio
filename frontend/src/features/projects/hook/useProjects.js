@@ -1,16 +1,15 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import projectsApi from '../api/projectsApi';
-import { initialProjectsListState } from '../state/projectsState';
 
 export const useProjects = (initialCategory = 'All') => {
-  const [data, setData] = useState(initialProjectsListState);
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [page, setPage] = useState(1);
 
-  const fetchProjects = useCallback(async () => {
-    setData((prev) => ({ ...prev, loading: true, error: null }));
-    try {
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ['projects', selectedCategory, search, page],
+    queryFn: async () => {
       const params = {
         page,
         limit: 9,
@@ -19,29 +18,22 @@ export const useProjects = (initialCategory = 'All') => {
       if (search.trim()) params.search = search.trim();
 
       const res = await projectsApi.getProjects(params);
-      setData({
+      return {
         projects: res.data || [],
         total: res.total || 0,
         totalPages: res.pages || 1,
         currentPage: page,
-        loading: false,
-        error: null,
-      });
-    } catch (err) {
-      setData((prev) => ({
-        ...prev,
-        loading: false,
-        error: err.response?.data?.message || 'Failed to load projects',
-      }));
-    }
-  }, [selectedCategory, search, page]);
-
-  useEffect(() => {
-    fetchProjects();
-  }, [fetchProjects]);
+      };
+    },
+  });
 
   return {
-    ...data,
+    projects: data?.projects || [],
+    total: data?.total || 0,
+    totalPages: data?.totalPages || 1,
+    currentPage: data?.currentPage || page,
+    loading: isLoading,
+    error: error ? (error.response?.data?.message || error.message) : null,
     search,
     setSearch,
     selectedCategory,
@@ -51,7 +43,7 @@ export const useProjects = (initialCategory = 'All') => {
     },
     page,
     setPage,
-    refetch: fetchProjects,
+    refetch,
   };
 };
 

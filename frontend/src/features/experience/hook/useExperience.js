@@ -1,35 +1,20 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import experienceApi from '../api/experienceApi';
-import { initialExperienceState } from '../state/experienceState';
 
 export const useExperience = () => {
-  const [data, setData] = useState(initialExperienceState);
-
-  const fetchExperience = useCallback(async () => {
-    setData((prev) => ({ ...prev, loading: true, error: null }));
-    try {
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ['experienceData'],
+    queryFn: async () => {
       const items = await experienceApi.getExperience();
-      setData({
-        experience: items || [],
-        loading: false,
-        error: null,
-      });
-    } catch (err) {
-      setData((prev) => ({
-        ...prev,
-        loading: false,
-        error: err.response?.data?.message || 'Failed to load experience',
-      }));
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchExperience();
-  }, [fetchExperience]);
+      return items || [];
+    },
+  });
 
   return {
-    ...data,
-    refetch: fetchExperience,
+    experience: data || [],
+    loading: isLoading,
+    error: error ? (error.response?.data?.message || error.message) : null,
+    refetch,
   };
 };
 

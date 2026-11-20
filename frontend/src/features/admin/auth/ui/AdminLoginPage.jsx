@@ -4,7 +4,7 @@ import useAdminLogin from '../hook/useAdminLogin';
 import Button from '../../../../shared/ui/Button';
 
 export const AdminLoginPage = () => {
-  const { credentials, setCredentials, toggleShowPassword, loading, handleSubmit } = useAdminLogin();
+  const { register, handleSubmit, errors, showPassword, toggleShowPassword, loading } = useAdminLogin();
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-4 bg-[var(--surface)] text-[var(--text)] transition-colors">
@@ -32,13 +32,20 @@ export const AdminLoginPage = () => {
               </div>
               <input
                 type="email"
-                required
-                value={credentials.email}
-                onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
                 placeholder="admin@khushisiddhapura.dev"
+                {...register('email', {
+                  required: 'Admin email is required',
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: 'Please enter a valid email address',
+                  },
+                })}
                 className="w-full rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm pl-10 pr-3.5 py-2.5 text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--primary)]"
               />
             </div>
+            {errors.email && (
+              <span className="text-[11px] text-red-500 mt-1 block">{errors.email.message}</span>
+            )}
           </div>
 
           <div>
@@ -50,11 +57,9 @@ export const AdminLoginPage = () => {
                 <Lock className="w-4 h-4" />
               </div>
               <input
-                type={credentials.showPassword ? 'text' : 'password'}
-                required
-                value={credentials.password}
-                onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+                type={showPassword ? 'text' : 'password'}
                 placeholder="••••••••••••"
+                {...register('password', { required: 'Password is required' })}
                 className="w-full rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm pl-10 pr-10 py-2.5 text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--primary)]"
               />
               <button
@@ -62,9 +67,12 @@ export const AdminLoginPage = () => {
                 onClick={toggleShowPassword}
                 className="absolute inset-y-0 right-0 pr-3 flex items-center text-[var(--text-muted)] hover:text-[var(--text)] cursor-pointer"
               >
-                {credentials.showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
+            {errors.password && (
+              <span className="text-[11px] text-red-500 mt-1 block">{errors.password.message}</span>
+            )}
           </div>
 
           <Button

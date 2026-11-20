@@ -1,35 +1,20 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import achievementsApi from '../api/achievementsApi';
-import { initialAchievementsState } from '../state/achievementsState';
 
 export const useAchievements = () => {
-  const [data, setData] = useState(initialAchievementsState);
-
-  const fetchAchievements = useCallback(async () => {
-    setData((prev) => ({ ...prev, loading: true, error: null }));
-    try {
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ['achievementsData'],
+    queryFn: async () => {
       const items = await achievementsApi.getAchievements();
-      setData({
-        achievements: items || [],
-        loading: false,
-        error: null,
-      });
-    } catch (err) {
-      setData((prev) => ({
-        ...prev,
-        loading: false,
-        error: err.response?.data?.message || 'Failed to load achievements',
-      }));
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchAchievements();
-  }, [fetchAchievements]);
+      return items || [];
+    },
+  });
 
   return {
-    ...data,
-    refetch: fetchAchievements,
+    achievements: data || [],
+    loading: isLoading,
+    error: error ? (error.response?.data?.message || error.message) : null,
+    refetch,
   };
 };
 

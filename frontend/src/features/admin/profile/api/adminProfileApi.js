@@ -12,3 +12,4 @@ export const adminProfileApi = {
 };
 
 export default adminProfileApi;
+

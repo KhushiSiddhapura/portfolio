@@ -1,16 +1,16 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import homeApi from '../api/homeApi';
-import { initialHomeState, initialContactForm } from '../state/homeState';
+import { initialContactForm } from '../state/homeState';
 
 export const useHome = () => {
-  const [data, setData] = useState(initialHomeState);
   const [contactForm, setContactForm] = useState(initialContactForm);
   const [submittingContact, setSubmittingContact] = useState(false);
 
-  const fetchHomeData = useCallback(async () => {
-    setData((prev) => ({ ...prev, loading: true, error: null }));
-    try {
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ['homeData'],
+    queryFn: async () => {
       const [profile, featuredProjects, skillsRes, experience, achievements] = await Promise.all([
         homeApi.getProfile().catch(() => null),
         homeApi.getFeaturedProjects().catch(() => []),
@@ -19,27 +19,15 @@ export const useHome = () => {
         homeApi.getAchievements().catch(() => []),
       ]);
 
-      setData({
+      return {
         profile,
         featuredProjects: featuredProjects || [],
         skillsGrouped: skillsRes?.grouped || [],
         experience: experience || [],
         achievements: achievements || [],
-        loading: false,
-        error: null,
-      });
-    } catch (err) {
-      setData((prev) => ({
-        ...prev,
-        loading: false,
-        error: err.message || 'Failed to fetch homepage data',
-      }));
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchHomeData();
-  }, [fetchHomeData]);
+      };
+    },
+  });
 
   const handleContactSubmit = async (e) => {
     if (e && e.preventDefault) e.preventDefault();
@@ -63,12 +51,18 @@ export const useHome = () => {
   };
 
   return {
-    ...data,
+    profile: data?.profile || null,
+    featuredProjects: data?.featuredProjects || [],
+    skillsGrouped: data?.skillsGrouped || [],
+    experience: data?.experience || [],
+    achievements: data?.achievements || [],
+    loading: isLoading,
+    error: error ? error.message : null,
     contactForm,
     setContactForm,
     submittingContact,
     handleContactSubmit,
-    refetch: fetchHomeData,
+    refetch,
   };
 };
 

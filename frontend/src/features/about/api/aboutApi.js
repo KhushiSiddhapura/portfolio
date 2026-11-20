@@ -16,3 +16,4 @@ export const aboutApi = {
 };
 
 export default aboutApi;
+

@@ -18,3 +18,4 @@ export const initialSettingsState = {
     showContact: true,
   },
 };
+

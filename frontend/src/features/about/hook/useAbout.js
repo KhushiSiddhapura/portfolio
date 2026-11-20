@@ -1,42 +1,31 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import aboutApi from '../api/aboutApi';
-import { initialAboutState } from '../state/aboutState';
 
 export const useAbout = () => {
-  const [data, setData] = useState(initialAboutState);
-
-  const fetchAboutData = useCallback(async () => {
-    setData((prev) => ({ ...prev, loading: true, error: null }));
-    try {
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ['aboutData'],
+    queryFn: async () => {
       const [profile, experience, achievements] = await Promise.all([
         aboutApi.getProfile().catch(() => null),
         aboutApi.getExperience().catch(() => []),
         aboutApi.getAchievements().catch(() => []),
       ]);
 
-      setData({
+      return {
         profile,
         experience: experience || [],
         achievements: achievements || [],
-        loading: false,
-        error: null,
-      });
-    } catch (err) {
-      setData((prev) => ({
-        ...prev,
-        loading: false,
-        error: err.message || 'Failed to load about details',
-      }));
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchAboutData();
-  }, [fetchAboutData]);
+      };
+    },
+  });
 
   return {
-    ...data,
-    refetch: fetchAboutData,
+    profile: data?.profile || null,
+    experience: data?.experience || [],
+    achievements: data?.achievements || [],
+    loading: isLoading,
+    error: error ? error.message : null,
+    refetch,
   };
 };
 

@@ -1,15 +1,26 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { loginAdmin, clearError } from '../../../auth/state/authSlice';
-import { initialAdminLoginState } from '../state/adminAuthState';
 
 export const useAdminLogin = () => {
-  const [credentials, setCredentials] = useState(initialAdminLoginState);
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated, loading, error } = useSelector((state) => state.auth);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -24,14 +35,9 @@ export const useAdminLogin = () => {
     }
   }, [error, dispatch]);
 
-  const handleSubmit = async (e) => {
-    if (e && e.preventDefault) e.preventDefault();
-    if (!credentials.email.trim() || !credentials.password) {
-      toast.error('Please enter both email and password');
-      return;
-    }
+  const onLogin = async (data) => {
     const result = await dispatch(
-      loginAdmin({ email: credentials.email.trim(), password: credentials.password })
+      loginAdmin({ email: data.email.trim(), password: data.password })
     );
     if (loginAdmin.fulfilled.match(result)) {
       toast.success('Welcome back, Admin!');
@@ -40,15 +46,16 @@ export const useAdminLogin = () => {
   };
 
   const toggleShowPassword = () => {
-    setCredentials((prev) => ({ ...prev, showPassword: !prev.showPassword }));
+    setShowPassword((prev) => !prev);
   };
 
   return {
-    credentials,
-    setCredentials,
+    register,
+    handleSubmit: handleSubmit(onLogin),
+    errors,
+    showPassword,
     toggleShowPassword,
     loading,
-    handleSubmit,
   };
 };
 

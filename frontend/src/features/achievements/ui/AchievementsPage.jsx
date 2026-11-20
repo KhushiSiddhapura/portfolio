@@ -82,3 +82,4 @@ export const AchievementsPage = () => {
 };
 
 export default AchievementsPage;
+
