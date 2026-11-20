@@ -94,3 +94,4 @@ const updateProfileData = async () => {
 };
 
 updateProfileData();
+

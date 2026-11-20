@@ -65,3 +65,4 @@ export const VisibleLongWave = ({
 };
 
 export default VisibleLongWave;
+

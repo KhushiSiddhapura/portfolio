@@ -12,6 +12,10 @@ import {
   Briefcase,
   Award,
   Send,
+  Flame,
+  Layers,
+  Database,
+  Terminal,
 } from 'lucide-react';
 import useHome from '../hook/useHome';
 import VisibleLongWave from '../../../shared/components/svg/VisibleLongWave';
@@ -39,173 +43,142 @@ export const HomePage = () => {
 
   return (
     <div className="w-full overflow-hidden">
-      {/* 1. HERO SECTION WITH CURVED WAVE BOTTOM */}
-      <section className="relative pt-12 pb-24 md:pt-20 md:pb-32 bg-[var(--background)] overflow-hidden">
-        {/* Visible Long Curving Gradient Ribbons in Background */}
-        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden opacity-35 dark:opacity-20">
-          <svg viewBox="0 0 1440 800" fill="none" className="w-full h-full" preserveAspectRatio="none">
-            <path
-              d="M-80,180 C320,30 640,420 1080,140 C1320,0 1460,220 1560,360"
-              stroke="url(#hero-long-curve)"
-              strokeWidth="42"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <path
-              d="M-40,260 C360,110 680,500 1120,220 C1360,70 1500,300 1600,440"
-              stroke="url(#hero-long-curve-soft)"
-              strokeWidth="20"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <defs>
-              <linearGradient id="hero-long-curve" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#7C3AED" />
-                <stop offset="50%" stopColor="#A78BFA" />
-                <stop offset="100%" stopColor="#C4B5FD" />
-              </linearGradient>
-              <linearGradient id="hero-long-curve-soft" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#C4B5FD" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#7C3AED" stopOpacity="0.4" />
-              </linearGradient>
-            </defs>
-          </svg>
+      {/* 1. HERO SECTION WITH CENTER PHOTO & GIANT TYPOGRAPHY (Zalanidhish Style) */}
+      <section className="relative pt-6 pb-28 md:pt-10 md:pb-36 bg-[var(--background)] overflow-hidden">
+        {/* Ambient Dark Nebula / Radiant Purple Glow in Center */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-purple-700/25 via-fuchsia-600/20 to-indigo-600/20 rounded-full blur-[140px] pointer-events-none select-none opacity-80 dark:opacity-60" />
+
+        {/* Top Banner Status Pill */}
+        <div className="max-w-[1200px] mx-auto px-4 text-center relative z-20 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--card)]/90 backdrop-blur-md border border-[var(--primary-border)] text-[var(--primary)] text-xs font-semibold shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Available for Internships & Full-Stack Projects</span>
+          </div>
         </div>
 
-        <OrganicShape className="-top-24 -right-24" size={480} opacity={0.06} />
-        <OrganicShape className="top-1/2 -left-32" size={360} opacity={0.04} />
+        {/* Center Stage: Giant Name Text + Centered Portrait + Floating Badges */}
+        <div className="relative max-w-[1300px] mx-auto px-4 min-h-[460px] sm:min-h-[540px] md:min-h-[600px] flex flex-col items-center justify-end z-10 select-none">
+          {/* Giant Bold Background Typography */}
+          <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0">
+            <h1 className="font-black text-6xl sm:text-8xl md:text-[10rem] lg:text-[12rem] xl:text-[14rem] tracking-tighter uppercase leading-none bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 bg-clip-text text-transparent opacity-85 dark:opacity-75 drop-shadow-2xl">
+              KHUSHI
+            </h1>
+          </div>
 
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column - Hero Content */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--surface-alt)] border border-[var(--primary-border)] text-[var(--primary)] text-xs font-medium shadow-2xs">
-                <span className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" />
-                <span>Available for Internships & Projects</span>
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-sm sm:text-base font-semibold tracking-wider uppercase text-[var(--primary)]">
-                  {profile?.smallIntro || "Hello, I'm"}
-                </p>
-                <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-[var(--text)] leading-tight">
-                  {profile?.name || 'Khushi Siddhapura'}
-                </h1>
-                <h2 className="text-xl sm:text-2xl font-medium text-[var(--text-secondary)]">
-                  {profile?.title || 'Full Stack Developer & IT Student'}
-                </h2>
-              </div>
-
-              <p className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
-                {profile?.heroIntroduction ||
-                  'I enjoy turning ideas into practical digital experiences. I build web applications, explore new technologies, and continuously improve my development skills.'}
-              </p>
-
-              <div className="pt-2 flex flex-wrap items-center gap-4">
-                <Link
-                  to="/projects"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white bg-[var(--primary)] hover:bg-[var(--primary-hover)] shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 hover:-translate-y-0.5"
-                >
-                  <span>View Projects</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-
-                <Link
-                  to="/resume"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-[var(--text)] bg-[var(--surface)] hover:bg-[var(--surface-alt)] border border-[var(--border-strong)] hover:border-[var(--primary)] transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <FileText className="w-4 h-4 text-[var(--primary)]" />
-                  <span>Download Resume</span>
-                </Link>
-
-                <div className="flex items-center gap-2 pl-2">
-                  <a
-                    href={profile?.socialLinks?.github || 'https://github.com'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub Profile"
-                    className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all hover:-translate-y-0.5"
-                  >
-                    <Github className="w-4 h-4" />
-                  </a>
-                  <a
-                    href={profile?.socialLinks?.linkedin || 'https://linkedin.com'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn Profile"
-                    className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all hover:-translate-y-0.5"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
+          {/* Floating Aesthetic Tech Badges Left & Right (like Zalanidhish site) */}
+          {/* Left Badges */}
+          <div className="absolute left-4 sm:left-12 lg:left-24 top-[22%] z-20 animate-float hidden sm:block">
+            <div className="p-3.5 sm:p-4 rounded-2xl glass-panel border border-orange-500/30 text-orange-500 bg-zinc-900/40 shadow-lg backdrop-blur-xl">
+              <Code2 className="w-6 h-6" />
             </div>
+          </div>
+          <div className="absolute left-2 sm:left-8 lg:left-16 top-[48%] z-20 animate-float-reverse hidden sm:block">
+            <div className="p-3 rounded-2xl glass-panel border border-purple-500/30 text-purple-400 bg-zinc-900/40 shadow-lg backdrop-blur-xl">
+              <Flame className="w-5 h-5 text-amber-500" />
+            </div>
+          </div>
+          <div className="absolute left-6 sm:left-16 lg:left-28 top-[72%] z-20 animate-float hidden sm:block">
+            <div className="p-3 rounded-2xl glass-panel border border-[var(--primary-border)] text-[var(--primary)] bg-zinc-900/40 shadow-lg backdrop-blur-xl">
+              <Terminal className="w-5 h-5" />
+            </div>
+          </div>
 
-            {/* Right Column - Aesthetic Curvy Portrait Display */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[340px] sm:max-w-[380px] pt-4 pb-2">
-                {/* Soft glowing ambient purple aura */}
-                <div className="absolute -inset-4 bg-gradient-to-tr from-[var(--primary)] via-purple-500/20 to-fuchsia-500/30 rounded-[3rem] blur-2xl opacity-60 dark:opacity-40 animate-pulse-glow pointer-events-none" />
+          {/* Right Badges */}
+          <div className="absolute right-4 sm:right-12 lg:right-24 top-[22%] z-20 animate-float-reverse hidden sm:block">
+            <div className="p-3.5 sm:p-4 rounded-2xl glass-panel border border-indigo-500/30 text-indigo-400 bg-zinc-900/40 shadow-lg backdrop-blur-xl">
+              <Layers className="w-6 h-6" />
+            </div>
+          </div>
+          <div className="absolute right-2 sm:right-8 lg:right-16 top-[48%] z-20 animate-float hidden sm:block">
+            <div className="p-3 rounded-2xl glass-panel border border-emerald-500/30 text-emerald-400 bg-zinc-900/40 shadow-lg backdrop-blur-xl">
+              <Database className="w-5 h-5" />
+            </div>
+          </div>
+          <div className="absolute right-6 sm:right-16 lg:right-28 top-[72%] z-20 animate-float-reverse hidden sm:block">
+            <div className="p-3 rounded-2xl glass-panel border border-[var(--primary-border)] text-[var(--primary)] bg-zinc-900/40 shadow-lg backdrop-blur-xl">
+              <Sparkles className="w-5 h-5 text-amber-400" />
+            </div>
+          </div>
 
-                {/* Curvy decorative backdrop outline */}
-                <div className="absolute -top-1 -right-1 w-full h-full rounded-[2.8rem] bg-gradient-to-br from-[var(--primary)]/15 to-transparent border border-[var(--primary-border)]/50 pointer-events-none" />
+          {/* Central Portrait of Khushi (Rising in Center overlapping Giant Text) */}
+          <div className="relative z-10 flex flex-col items-center">
+            <div className="relative w-64 sm:w-80 md:w-96 aspect-[4/5] rounded-t-[3rem] sm:rounded-t-[4rem] overflow-hidden border-t-2 border-x-2 border-[var(--primary-border)] shadow-2xl bg-gradient-to-b from-[var(--surface-alt)]/60 to-[var(--surface)] group">
+              <img
+                src={profile?.profileImage?.url || '/khushi.jpg'}
+                alt={profile?.name || 'Khushi Siddhapura'}
+                onError={(e) => {
+                  if (e.currentTarget.src !== window.location.origin + '/khushi.png') {
+                    e.currentTarget.src = '/khushi.png';
+                  }
+                }}
+                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
 
-                {/* Main Portrait Frame with smooth float animation */}
-                <div className="relative rounded-[2.5rem] bg-[var(--card)] border-2 border-[var(--primary-border)] overflow-hidden shadow-xl animate-float p-3">
-                  <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-b from-[var(--surface-alt)] to-[var(--surface)] aspect-[4/5] flex items-center justify-center group">
-                    <img
-                      src={profile?.profileImage?.url || '/khushi.png'}
-                      alt={profile?.name || 'Khushi Siddhapura'}
-                      onError={(e) => {
-                        if (e.currentTarget.src !== window.location.origin + '/khushi.svg') {
-                          e.currentTarget.src = '/khushi.svg';
-                        }
-                      }}
-                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    />
-
-                    {/* Subtle bottom gradient overlay for contrast */}
-                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[var(--card)] via-[var(--card)]/60 to-transparent" />
-
-                    {/* Bottom card info over photo */}
-                    <div className="absolute bottom-3 inset-x-3 p-3 rounded-2xl glass-panel border border-[var(--border)] shadow-xs">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="font-bold text-sm text-[var(--text)] leading-tight">
-                            {profile?.name || 'Khushi Siddhapura'}
-                          </h3>
-                          <p className="text-[11px] font-medium text-[var(--primary)] mt-0.5">
-                            B.Tech IT • BVM Gujarat
-                          </p>
-                        </div>
-                        <div className="w-8 h-8 rounded-full bg-[var(--primary-soft)] border border-[var(--primary-border)] text-[var(--primary)] flex items-center justify-center text-xs font-bold">
-                          KS
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Floating Glass Pill 1: Available status (Top-Left) */}
-                  <div className="absolute -top-2 -left-2 glass-panel px-3.5 py-1.5 rounded-full border border-[var(--primary-border)] shadow-md animate-float-reverse flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                    <span className="text-[11px] font-semibold text-[var(--text)]">Full Stack Dev</span>
-                  </div>
-
-                  {/* Floating Glass Pill 2: Tech stack tags (Bottom-Right) */}
-                  <div className="absolute -bottom-2 -right-2 glass-panel px-3.5 py-2 rounded-2xl border border-[var(--primary-border)] shadow-md animate-float flex items-center gap-2">
-                    <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--primary)]">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      <span>MERN Stack</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* Bottom fade into the curve */}
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[var(--background)]/80 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-0 inset-x-0">
-          <VisibleLongWave fill="var(--surface)" height="80px" accentColor="#7C3AED" secondaryColor="#8B5CF6" />
+        {/* Intro Tagline & CTA Action Bar below the center visual */}
+        <div className="relative max-w-[850px] mx-auto px-4 text-center mt-6 z-20 space-y-4">
+          <div className="space-y-1">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--text)] tracking-tight">
+              Khushi Siddhapura
+            </h2>
+            <p className="text-sm sm:text-base font-semibold text-[var(--primary)]">
+              Full Stack Developer • B.Tech Information Technology @ BVM
+            </p>
+          </div>
+
+          <p className="text-xs sm:text-sm text-[var(--text-secondary)] max-w-xl mx-auto leading-relaxed">
+            {profile?.heroIntroduction ||
+              'Turning ideas into practical digital experiences. Building scalable web applications across the MERN stack with clean architecture and modern UX.'}
+          </p>
+
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm text-white bg-[var(--primary)] hover:bg-[var(--primary-hover)] shadow-md hover:shadow-lg transition-all active:scale-95"
+            >
+              <span>Explore Projects</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+
+            <Link
+              to="/resume"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm text-[var(--text)] bg-[var(--card)] hover:bg-[var(--surface-alt)] border border-[var(--border-strong)] hover:border-[var(--primary)] transition-all shadow-xs"
+            >
+              <FileText className="w-4 h-4 text-[var(--primary)]" />
+              <span>Resume</span>
+            </Link>
+
+            <div className="flex items-center gap-2 pl-2">
+              <a
+                href={profile?.socialLinks?.github || 'https://github.com/KhushiSiddhapura'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="p-2.5 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href={profile?.socialLinks?.linkedin || 'https://www.linkedin.com/in/khushi-siddhapura-7247a0397'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="p-2.5 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Sweeping Visible Long Wave at the Bottom */}
+        <div className="absolute bottom-0 inset-x-0 z-20">
+          <VisibleLongWave fill="var(--surface)" height="90px" accentColor="#7C3AED" secondaryColor="#8B5CF6" />
         </div>
       </section>
 
