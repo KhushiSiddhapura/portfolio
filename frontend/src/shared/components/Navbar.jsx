@@ -39,34 +39,34 @@ export const Navbar = () => {
     <div className="sticky top-0 z-50 w-full pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none">
       {/* Floating Island Capsule Navbar */}
       <header
-        className={`max-w-[1020px] mx-auto w-full transition-all duration-300 pointer-events-auto rounded-full px-4 sm:px-6 py-2.5 border ${
+        className={`max-w-[1080px] mx-auto w-full transition-all duration-300 pointer-events-auto rounded-full px-4 sm:px-6 py-2 sm:py-2.5 border ${
           scrolled
             ? 'bg-[var(--card)]/90 backdrop-blur-md border-[var(--border)] shadow-lg'
             : 'bg-[var(--card)]/80 backdrop-blur-md border-[var(--border)] shadow-md'
-        } flex items-center justify-between`}
+        } flex items-center justify-between gap-2 sm:gap-4`}
       >
         {/* Brand Logo & Name */}
         <Link
           to="/"
-          className="flex items-center gap-2 group text-decoration-none focus:outline-none"
+          className="flex items-center gap-2 group text-decoration-none focus:outline-none shrink-0"
         >
           <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[var(--primary)] to-[var(--primary-hover)] flex items-center justify-center text-white font-extrabold text-sm shadow-xs group-hover:scale-105 transition-transform">
             K
           </div>
-          <span className="font-extrabold text-sm sm:text-base tracking-tight text-[var(--text)] group-hover:text-[var(--primary)] transition-colors">
-            Khushi <span className="text-[var(--primary)] font-semibold">Siddhapura</span>
+          <span className="font-extrabold text-sm sm:text-base tracking-tight text-[var(--text)] group-hover:text-[var(--primary)] transition-colors whitespace-nowrap">
+            Khushi <span className="text-[var(--primary)] font-semibold hidden sm:inline">Siddhapura</span>
           </span>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-0.5 lg:gap-1.5 shrink-0">
           {navLinks.map((link) => {
             const active = isActive(link.path);
             return (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative px-3 py-1.5 text-xs font-semibold rounded-full transition-all ${
+                className={`relative px-2.5 lg:px-3 py-1.5 text-xs font-semibold rounded-full whitespace-nowrap transition-all ${
                   active
                     ? 'text-[var(--primary)] bg-[var(--primary-soft)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--surface)]'
@@ -79,11 +79,11 @@ export const Navbar = () => {
         </nav>
 
         {/* Action Items: Theme Toggle & Resume Pill */}
-        <div className="hidden md:flex items-center gap-2.5">
+        <div className="hidden md:flex items-center gap-2 lg:gap-3 shrink-0">
           <ThemeToggle />
           <Link
             to="/resume"
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-950 hover:bg-[var(--primary)] dark:hover:bg-[var(--primary)] dark:hover:text-white rounded-full transition-all duration-200 active:scale-95 shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-1.5 lg:py-2 text-xs font-bold text-white bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-950 hover:bg-[var(--primary)] dark:hover:bg-[var(--primary)] dark:hover:text-white rounded-full transition-all duration-200 active:scale-95 shadow-xs whitespace-nowrap"
           >
             <FileText className="w-3.5 h-3.5" />
             <span>Resume</span>
@@ -106,7 +106,7 @@ export const Navbar = () => {
 
       {/* Mobile Drawer Menu */}
       {isOpen && (
-        <div className="md:hidden pointer-events-auto max-w-[1020px] mx-auto mt-2 rounded-2xl border border-[var(--border)] bg-[var(--card)]/95 backdrop-blur-xl p-4 shadow-xl space-y-2 animate-in fade-in duration-200">
+        <div className="md:hidden pointer-events-auto max-w-[1080px] mx-auto mt-2 rounded-2xl border border-[var(--border)] bg-[var(--card)]/95 backdrop-blur-xl p-4 shadow-xl space-y-2 animate-in fade-in duration-200">
           <nav className="flex flex-col space-y-1">
             {navLinks.map((link) => {
               const active = isActive(link.path);

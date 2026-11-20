@@ -41,13 +41,8 @@ export const AboutPage = () => {
           <div className="lg:col-span-4 flex justify-center lg:justify-end">
             <div className="relative w-48 sm:w-56 aspect-[4/5] rounded-[2rem] border-2 border-[var(--primary-border)] overflow-hidden shadow-lg p-2 bg-[var(--card)] animate-float">
               <img
-                src={profile?.profileImage?.url || '/khushi.png'}
+                src={profile?.profileImage?.url || '/khushi.jpg'}
                 alt={profile?.name || 'Khushi Siddhapura'}
-                onError={(e) => {
-                  if (e.currentTarget.src !== window.location.origin + '/khushi.svg') {
-                    e.currentTarget.src = '/khushi.svg';
-                  }
-                }}
                 className="w-full h-full object-cover object-top rounded-[1.5rem]"
               />
             </div>

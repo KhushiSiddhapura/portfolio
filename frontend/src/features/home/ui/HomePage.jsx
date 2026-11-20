@@ -43,90 +43,85 @@ export const HomePage = () => {
 
   return (
     <div className="w-full overflow-hidden">
-      {/* 1. HERO SECTION WITH CENTER PHOTO & GIANT TYPOGRAPHY (Zalanidhish Style) */}
-      <section className="relative pt-6 pb-28 md:pt-10 md:pb-36 bg-[var(--background)] overflow-hidden">
-        {/* Ambient Dark Nebula / Radiant Purple Glow in Center */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-purple-700/25 via-fuchsia-600/20 to-indigo-600/20 rounded-full blur-[140px] pointer-events-none select-none opacity-80 dark:opacity-60" />
+      {/* 1. HERO SECTION WITH CENTER PHOTO & BALANCED TYPOGRAPHY */}
+      <section className="relative pt-8 sm:pt-12 md:pt-16 pb-24 md:pb-32 bg-[var(--background)] overflow-hidden max-w-full">
+        {/* Ambient Dark Nebula / Soft Radiant Purple Glow in Center */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-tr from-purple-700/20 via-fuchsia-600/15 to-indigo-600/15 rounded-full blur-[130px] pointer-events-none select-none opacity-70 dark:opacity-50" />
 
-        {/* Top Banner Status Pill */}
-        <div className="max-w-[1200px] mx-auto px-4 text-center relative z-20 mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--card)]/90 backdrop-blur-md border border-[var(--primary-border)] text-[var(--primary)] text-xs font-semibold shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Available for Internships & Full-Stack Projects</span>
-          </div>
-        </div>
-
-        {/* Center Stage: Giant Name Text + Centered Portrait + Floating Badges */}
-        <div className="relative max-w-[1300px] mx-auto px-4 min-h-[460px] sm:min-h-[540px] md:min-h-[600px] flex flex-col items-center justify-end z-10 select-none">
-          {/* Giant Bold Background Typography */}
-          <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0">
-            <h1 className="font-black text-6xl sm:text-8xl md:text-[10rem] lg:text-[12rem] xl:text-[14rem] tracking-tighter uppercase leading-none bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 bg-clip-text text-transparent opacity-85 dark:opacity-75 drop-shadow-2xl">
+        {/* Center Stage Container with Overflow Guard */}
+        <div className="relative max-w-[1100px] mx-auto px-4 min-h-[400px] sm:min-h-[460px] md:min-h-[500px] flex flex-col items-center justify-end z-10 select-none overflow-hidden">
+          {/* Toned Down, Responsive Background Typography */}
+          <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-full overflow-hidden text-center pointer-events-none select-none z-0 px-4">
+            <h1
+              className="font-black tracking-tight uppercase leading-none select-none whitespace-nowrap bg-gradient-to-r from-purple-500/25 via-violet-400/20 to-indigo-500/25 dark:from-purple-400/15 dark:via-fuchsia-400/15 dark:to-indigo-400/15 bg-clip-text text-transparent"
+              style={{ fontSize: 'clamp(2.8rem, 10vw, 7.5rem)' }}
+            >
               KHUSHI
             </h1>
           </div>
 
-          {/* Floating Aesthetic Tech Badges Left & Right (like Zalanidhish site) */}
-          {/* Left Badges */}
-          <div className="absolute left-4 sm:left-12 lg:left-24 top-[22%] z-20 animate-float hidden sm:block">
-            <div className="p-3.5 sm:p-4 rounded-2xl glass-panel border border-orange-500/30 text-orange-500 bg-zinc-900/40 shadow-lg backdrop-blur-xl">
-              <Code2 className="w-6 h-6" />
+          {/* Floating Subtle Side Tech Badges (safely positioned within 1100px boundary, hidden on mobile/tablet) */}
+          <div className="absolute inset-0 pointer-events-none z-20 hidden lg:block">
+            {/* Left Badges */}
+            <div className="absolute left-4 xl:left-8 top-[20%] animate-float pointer-events-auto">
+              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-amber-500 shadow-sm hover:border-[var(--primary)] transition-colors">
+                <Code2 className="w-4.5 h-4.5" />
+              </div>
             </div>
-          </div>
-          <div className="absolute left-2 sm:left-8 lg:left-16 top-[48%] z-20 animate-float-reverse hidden sm:block">
-            <div className="p-3 rounded-2xl glass-panel border border-purple-500/30 text-purple-400 bg-zinc-900/40 shadow-lg backdrop-blur-xl">
-              <Flame className="w-5 h-5 text-amber-500" />
+            <div className="absolute left-1 xl:left-4 top-[48%] animate-float-reverse pointer-events-auto">
+              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-orange-500 shadow-sm hover:border-[var(--primary)] transition-colors">
+                <Flame className="w-4.5 h-4.5" />
+              </div>
             </div>
-          </div>
-          <div className="absolute left-6 sm:left-16 lg:left-28 top-[72%] z-20 animate-float hidden sm:block">
-            <div className="p-3 rounded-2xl glass-panel border border-[var(--primary-border)] text-[var(--primary)] bg-zinc-900/40 shadow-lg backdrop-blur-xl">
-              <Terminal className="w-5 h-5" />
+            <div className="absolute left-5 xl:left-10 top-[72%] animate-float pointer-events-auto">
+              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-[var(--primary)] shadow-sm hover:border-[var(--primary)] transition-colors">
+                <Terminal className="w-4.5 h-4.5" />
+              </div>
+            </div>
+
+            {/* Right Badges */}
+            <div className="absolute right-4 xl:right-8 top-[20%] animate-float-reverse pointer-events-auto">
+              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-indigo-400 shadow-sm hover:border-[var(--primary)] transition-colors">
+                <Layers className="w-4.5 h-4.5" />
+              </div>
+            </div>
+            <div className="absolute right-1 xl:right-4 top-[48%] animate-float pointer-events-auto">
+              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-emerald-400 shadow-sm hover:border-[var(--primary)] transition-colors">
+                <Database className="w-4.5 h-4.5" />
+              </div>
+            </div>
+            <div className="absolute right-5 xl:right-10 top-[72%] animate-float-reverse pointer-events-auto">
+              <div className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md text-purple-400 shadow-sm hover:border-[var(--primary)] transition-colors">
+                <Sparkles className="w-4.5 h-4.5" />
+              </div>
             </div>
           </div>
 
-          {/* Right Badges */}
-          <div className="absolute right-4 sm:right-12 lg:right-24 top-[22%] z-20 animate-float-reverse hidden sm:block">
-            <div className="p-3.5 sm:p-4 rounded-2xl glass-panel border border-indigo-500/30 text-indigo-400 bg-zinc-900/40 shadow-lg backdrop-blur-xl">
-              <Layers className="w-6 h-6" />
-            </div>
-          </div>
-          <div className="absolute right-2 sm:right-8 lg:right-16 top-[48%] z-20 animate-float hidden sm:block">
-            <div className="p-3 rounded-2xl glass-panel border border-emerald-500/30 text-emerald-400 bg-zinc-900/40 shadow-lg backdrop-blur-xl">
-              <Database className="w-5 h-5" />
-            </div>
-          </div>
-          <div className="absolute right-6 sm:right-16 lg:right-28 top-[72%] z-20 animate-float-reverse hidden sm:block">
-            <div className="p-3 rounded-2xl glass-panel border border-[var(--primary-border)] text-[var(--primary)] bg-zinc-900/40 shadow-lg backdrop-blur-xl">
-              <Sparkles className="w-5 h-5 text-amber-400" />
-            </div>
-          </div>
+          {/* Central High-Res Portrait Card of Khushi */}
+          <div className="relative z-10 flex flex-col items-center mt-2">
+            {/* Soft Ambient Backdrop Aura */}
+            <div className="absolute -inset-3 bg-gradient-to-tr from-[var(--primary)]/20 via-purple-500/10 to-transparent rounded-t-[3.5rem] blur-xl opacity-75 pointer-events-none" />
 
-          {/* Central Portrait of Khushi (Rising in Center overlapping Giant Text) */}
-          <div className="relative z-10 flex flex-col items-center">
-            <div className="relative w-64 sm:w-80 md:w-96 aspect-[4/5] rounded-t-[3rem] sm:rounded-t-[4rem] overflow-hidden border-t-2 border-x-2 border-[var(--primary-border)] shadow-2xl bg-gradient-to-b from-[var(--surface-alt)]/60 to-[var(--surface)] group">
+            <div className="relative w-56 sm:w-68 md:w-76 lg:w-80 max-w-[85vw] aspect-[4/5] rounded-t-[2.5rem] sm:rounded-t-[3.5rem] overflow-hidden border-t-2 border-x-2 border-[var(--primary-border)]/70 dark:border-purple-500/30 shadow-2xl bg-gradient-to-b from-[var(--surface-alt)]/60 to-[var(--surface)] group">
               <img
                 src={profile?.profileImage?.url || '/khushi.jpg'}
                 alt={profile?.name || 'Khushi Siddhapura'}
-                onError={(e) => {
-                  if (e.currentTarget.src !== window.location.origin + '/khushi.png') {
-                    e.currentTarget.src = '/khushi.png';
-                  }
-                }}
                 className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
               />
 
-              {/* Bottom fade into the curve */}
-              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[var(--background)]/80 via-transparent to-transparent pointer-events-none" />
+              {/* Bottom soft gradient fade into curve */}
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[var(--background)]/85 via-[var(--background)]/30 to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
 
         {/* Intro Tagline & CTA Action Bar below the center visual */}
-        <div className="relative max-w-[850px] mx-auto px-4 text-center mt-6 z-20 space-y-4">
+        <div className="relative max-w-[800px] mx-auto px-4 text-center mt-6 z-20 space-y-4">
           <div className="space-y-1">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--text)] tracking-tight">
               Khushi Siddhapura
             </h2>
-            <p className="text-sm sm:text-base font-semibold text-[var(--primary)]">
+            <p className="text-xs sm:text-sm font-semibold text-[var(--primary)]">
               Full Stack Developer • B.Tech Information Technology @ BVM
             </p>
           </div>
@@ -178,7 +173,7 @@ export const HomePage = () => {
 
         {/* Sweeping Visible Long Wave at the Bottom */}
         <div className="absolute bottom-0 inset-x-0 z-20">
-          <VisibleLongWave fill="var(--surface)" height="90px" accentColor="#7C3AED" secondaryColor="#8B5CF6" />
+          <VisibleLongWave fill="var(--surface)" height="84px" accentColor="#7C3AED" secondaryColor="#8B5CF6" />
         </div>
       </section>
 
