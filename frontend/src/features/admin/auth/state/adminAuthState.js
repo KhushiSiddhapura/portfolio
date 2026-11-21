@@ -1,6 +1,5 @@
 export const initialAdminLoginState = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
   showPassword: false,
 };
-

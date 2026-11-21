@@ -5,4 +5,3 @@ export const initialAboutState = {
   loading: true,
   error: null,
 };
-

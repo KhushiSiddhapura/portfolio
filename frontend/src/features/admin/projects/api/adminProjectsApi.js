@@ -1,8 +1,8 @@
-import axiosInstance from '../../../../services/axiosInstance';
+import axiosInstance from "../../../../services/axiosInstance";
 
 export const adminProjectsApi = {
   getProjects: async (params = {}) => {
-    const res = await axiosInstance.get('/admin/projects', { params });
+    const res = await axiosInstance.get("/admin/projects", { params });
     return res.data.data;
   },
   getProjectById: async (id) => {
@@ -10,7 +10,7 @@ export const adminProjectsApi = {
     return res.data.data;
   },
   createProject: async (payload) => {
-    const res = await axiosInstance.post('/admin/projects', payload);
+    const res = await axiosInstance.post("/admin/projects", payload);
     return res.data.data;
   },
   updateProject: async (id, payload) => {
@@ -22,7 +22,10 @@ export const adminProjectsApi = {
     return res.data;
   },
   updateProjectStatus: async (id, statusPayload) => {
-    const res = await axiosInstance.patch(`/admin/projects/${id}/status`, statusPayload);
+    const res = await axiosInstance.patch(
+      `/admin/projects/${id}/status`,
+      statusPayload,
+    );
     return res.data.data;
   },
   duplicateProject: async (id) => {
@@ -32,4 +35,3 @@ export const adminProjectsApi = {
 };
 
 export default adminProjectsApi;
-

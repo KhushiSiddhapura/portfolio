@@ -1,12 +1,12 @@
-import axiosInstance from '../../../../services/axiosInstance';
+import axiosInstance from "../../../../services/axiosInstance";
 
 export const adminExperienceApi = {
   getExperience: async () => {
-    const res = await axiosInstance.get('/admin/experience');
+    const res = await axiosInstance.get("/admin/experience");
     return res.data.data;
   },
   createExperience: async (payload) => {
-    const res = await axiosInstance.post('/admin/experience', payload);
+    const res = await axiosInstance.post("/admin/experience", payload);
     return res.data.data;
   },
   updateExperience: async (id, payload) => {
@@ -20,4 +20,3 @@ export const adminExperienceApi = {
 };
 
 export default adminExperienceApi;
-

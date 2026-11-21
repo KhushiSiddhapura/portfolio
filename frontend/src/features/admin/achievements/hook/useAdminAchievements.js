@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
-import { toast } from 'react-toastify';
-import adminAchievementsApi from '../api/adminAchievementsApi';
-import { initialAchievementForm } from '../state/adminAchievementsState';
+import { useState, useEffect, useCallback } from "react";
+import { toast } from "react-toastify";
+import adminAchievementsApi from "../api/adminAchievementsApi";
+import { initialAchievementForm } from "../state/adminAchievementsState";
 
 export const useAdminAchievements = () => {
   const [achievements, setAchievements] = useState([]);
@@ -18,7 +18,7 @@ export const useAdminAchievements = () => {
       const items = await adminAchievementsApi.getAchievements();
       setAchievements(items || []);
     } catch (err) {
-      toast.error('Failed to load achievements');
+      toast.error("Failed to load achievements");
     } finally {
       setLoading(false);
     }
@@ -37,10 +37,10 @@ export const useAdminAchievements = () => {
   const openEditModal = (item) => {
     setEditingAch(item);
     setForm({
-      title: item.title || '',
-      description: item.description || '',
-      category: item.category || 'Academic',
-      date: item.date || '',
+      title: item.title || "",
+      description: item.description || "",
+      category: item.category || "Academic",
+      date: item.date || "",
     });
     setModalOpen(true);
   };
@@ -48,7 +48,7 @@ export const useAdminAchievements = () => {
   const handleSubmit = async (e) => {
     if (e && e.preventDefault) e.preventDefault();
     if (!form.title.trim()) {
-      toast.error('Achievement title is required');
+      toast.error("Achievement title is required");
       return;
     }
 
@@ -56,15 +56,15 @@ export const useAdminAchievements = () => {
     try {
       if (editingAch) {
         await adminAchievementsApi.updateAchievement(editingAch._id, form);
-        toast.success('Achievement updated successfully');
+        toast.success("Achievement updated successfully");
       } else {
         await adminAchievementsApi.createAchievement(form);
-        toast.success('Achievement created successfully');
+        toast.success("Achievement created successfully");
       }
       setModalOpen(false);
       fetchAchievements();
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to save achievement');
+      toast.error(err.response?.data?.message || "Failed to save achievement");
     } finally {
       setSaving(false);
     }
@@ -74,11 +74,11 @@ export const useAdminAchievements = () => {
     if (!deleteId) return;
     try {
       await adminAchievementsApi.deleteAchievement(deleteId);
-      toast.success('Achievement deleted successfully');
+      toast.success("Achievement deleted successfully");
       setAchievements(achievements.filter((a) => a._id !== deleteId));
       setDeleteId(null);
     } catch (err) {
-      toast.error('Failed to delete achievement');
+      toast.error("Failed to delete achievement");
     }
   };
 
@@ -102,4 +102,3 @@ export const useAdminAchievements = () => {
 };
 
 export default useAdminAchievements;
-

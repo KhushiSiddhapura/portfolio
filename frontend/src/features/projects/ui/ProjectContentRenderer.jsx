@@ -54,7 +54,7 @@ export const ProjectContentRenderer = ({ blocks = [] }) => {
                 <img
                   src={data.url}
                   alt={data.caption || 'Project visual'}
-                  className="w-full h-auto max-h-[500px] object-cover"
+                  className="w-full h-auto max-h-125 object-cover"
                   loading="lazy"
                 />
                 {data.caption && (
@@ -129,7 +129,7 @@ export const ProjectContentRenderer = ({ blocks = [] }) => {
                 <ul className="space-y-3">
                   {items.map((item, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm text-[var(--text-secondary)]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] mt-2 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] mt-2 shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -208,7 +208,7 @@ export const ProjectContentRenderer = ({ blocks = [] }) => {
                 )}
                 {data.url && (
                   <div className="rounded-lg overflow-hidden border border-[var(--border)] bg-[var(--card)] p-2">
-                    <img src={data.url} alt="System Architecture" className="w-full h-auto object-contain max-h-[420px] mx-auto" />
+                    <img src={data.url} alt="System Architecture" className="w-full h-auto object-contain max-h-105 mx-auto" />
                   </div>
                 )}
               </div>
@@ -271,7 +271,7 @@ export const ProjectContentRenderer = ({ blocks = [] }) => {
 
             return (
               <div key={key} className={`my-6 p-4 rounded-xl border flex items-start gap-3.5 ${typeConfig.bg}`}>
-                <Icon className={`w-5 h-5 flex-shrink-0 mt-0.5 ${typeConfig.iconColor}`} />
+                <Icon className={`w-5 h-5 shrink-0 mt-0.5 ${typeConfig.iconColor}`} />
                 <div className="flex-1">
                   {data.title && <h5 className="text-sm font-semibold mb-1">{data.title}</h5>}
                   <p className="text-sm leading-relaxed">{data.text}</p>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
+import {Plus, Edit, Trash2, Eye, EyeOff} from 'lucide-react';
 import useAdminSkills from '../hook/useAdminSkills';
-import { skillCategories } from '../state/adminSkillsState';
+import {skillCategories} from '../state/adminSkillsState';
 import Modal from '../../../../shared/ui/Modal';
 import ConfirmDialog from '../../../../shared/ui/ConfirmDialog';
 import Button from '../../../../shared/ui/Button';
@@ -24,13 +24,15 @@ export const SkillsManagementPage = () => {
     handleSubmit,
     handleToggleVisibility,
     confirmDelete,
-  } = useAdminSkills();
+  } = useAdminSkills ();
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-[var(--text)]">Skills Management</h2>
+          <h2 className="text-xl font-bold text-[var(--text)]">
+            Skills Management
+          </h2>
           <p className="text-xs text-[var(--text-muted)]">
             Add, update, categorize, and control visibility of your technical skills.
           </p>
@@ -40,85 +42,83 @@ export const SkillsManagementPage = () => {
         </Button>
       </div>
 
-      {loading ? (
-        <Loader text="Loading technical skills..." className="py-12" />
-      ) : (
-        <div className="space-y-8">
-          {skillCategories.map((cat) => {
-            const catSkills = skills.filter((s) => s.category === cat);
-            return (
-              <div key={cat} className="space-y-3">
-                <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
-                  <h3 className="font-bold text-sm text-[var(--text)] flex items-center gap-2">
-                    <span className="w-1.5 h-4 bg-[var(--primary)] rounded-full" />
-                    {cat} ({catSkills.length})
-                  </h3>
-                </div>
-
-                {catSkills.length === 0 ? (
-                  <p className="text-xs text-[var(--text-muted)] italic py-2">
-                    No skills in this category yet.
-                  </p>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    {catSkills.map((skill) => (
-                      <div
-                        key={skill._id}
-                        className={`p-3.5 rounded-xl border flex items-center justify-between transition-all ${
-                          skill.isVisible
-                            ? 'bg-[var(--card)] border-[var(--border)]'
-                            : 'bg-[var(--surface-alt)] border-[var(--border)] opacity-60'
-                        }`}
-                      >
-                        <div className="space-y-1">
-                          <span className="font-semibold text-xs text-[var(--text)] block">
-                            {skill.name}
-                          </span>
-                          <span className="text-[10px] text-[var(--text-muted)]">
-                            Proficiency: {skill.proficiency}%
-                          </span>
-                        </div>
-
-                        <div className="flex items-center gap-1">
-                          <button
-                            type="button"
-                            onClick={() => handleToggleVisibility(skill)}
-                            className="p-1 text-[var(--text-muted)] hover:text-[var(--text)] cursor-pointer"
-                            title={skill.isVisible ? 'Visible (Click to hide)' : 'Hidden (Click to show)'}
-                          >
-                            {skill.isVisible ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5 text-amber-500" />}
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => openEditModal(skill)}
-                            className="p-1 text-[var(--text-muted)] hover:text-[var(--primary)] cursor-pointer"
-                            title="Edit Skill"
-                          >
-                            <Edit className="w-3.5 h-3.5" />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => setDeleteId(skill._id)}
-                            className="p-1 text-[var(--text-muted)] hover:text-red-600 cursor-pointer"
-                            title="Delete Skill"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      </div>
-                    ))}
+      {loading
+        ? <Loader text="Loading technical skills..." className="py-12" />
+        : <div className="space-y-8">
+            {skillCategories.map (cat => {
+              const catSkills = skills.filter (s => s.category === cat);
+              return (
+                <div key={cat} className="space-y-3">
+                  <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
+                    <h3 className="font-bold text-sm text-[var(--text)] flex items-center gap-2">
+                      <span className="w-1.5 h-4 bg-[var(--primary)] rounded-full" />
+                      {cat} ({catSkills.length})
+                    </h3>
                   </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      )}
+
+                  {catSkills.length === 0
+                    ? <p className="text-xs text-[var(--text-muted)] italic py-2">
+                        No skills in this category yet.
+                      </p>
+                    : <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                        {catSkills.map (skill => (
+                          <div
+                            key={skill._id}
+                            className={`p-3.5 rounded-xl border flex items-center justify-between transition-all ${skill.isVisible ? 'bg-[var(--card)] border-[var(--border)]' : 'bg-[var(--surface-alt)] border-[var(--border)] opacity-60'}`}
+                          >
+                            <div className="space-y-1">
+                              <span className="font-semibold text-xs text-[var(--text)] block">
+                                {skill.name}
+                              </span>
+                              <span className="text-[10px] text-[var(--text-muted)]">
+                                Proficiency: {skill.proficiency}%
+                              </span>
+                            </div>
+
+                            <div className="flex items-center gap-1">
+                              <button
+                                type="button"
+                                onClick={() => handleToggleVisibility (skill)}
+                                className="p-1 text-[var(--text-muted)] hover:text-[var(--text)] cursor-pointer"
+                                title={
+                                  skill.isVisible
+                                    ? 'Visible (Click to hide)'
+                                    : 'Hidden (Click to show)'
+                                }
+                              >
+                                {skill.isVisible
+                                  ? <Eye className="w-3.5 h-3.5" />
+                                  : <EyeOff className="w-3.5 h-3.5 text-amber-500" />}
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => openEditModal (skill)}
+                                className="p-1 text-[var(--text-muted)] hover:text-[var(--primary)] cursor-pointer"
+                                title="Edit Skill"
+                              >
+                                <Edit className="w-3.5 h-3.5" />
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => setDeleteId (skill._id)}
+                                className="p-1 text-[var(--text-muted)] hover:text-red-600 cursor-pointer"
+                                title="Delete Skill"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>}
+                </div>
+              );
+            })}
+          </div>}
 
       {/* Modal */}
       <Modal
         isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
+        onClose={() => setModalOpen (false)}
         title={editingSkill ? 'Edit Technical Skill' : 'Add New Skill'}
       >
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -130,7 +130,7 @@ export const SkillsManagementPage = () => {
               type="text"
               required
               value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              onChange={e => setForm ({...form, name: e.target.value})}
               placeholder="e.g. React.js, TypeScript, PostgreSQL"
               className="w-full text-xs rounded-lg bg-[var(--surface)] border border-[var(--border)] px-3 py-2 text-[var(--text)] focus:border-[var(--primary)]"
             />
@@ -142,10 +142,10 @@ export const SkillsManagementPage = () => {
             </label>
             <select
               value={form.category}
-              onChange={(e) => setForm({ ...form, category: e.target.value })}
+              onChange={e => setForm ({...form, category: e.target.value})}
               className="w-full text-xs rounded-lg bg-[var(--surface)] border border-[var(--border)] px-3 py-2 text-[var(--text)] focus:border-[var(--primary)]"
             >
-              {skillCategories.map((c) => (
+              {skillCategories.map (c => (
                 <option key={c} value={c}>
                   {c}
                 </option>
@@ -162,7 +162,8 @@ export const SkillsManagementPage = () => {
               min="10"
               max="100"
               value={form.proficiency}
-              onChange={(e) => setForm({ ...form, proficiency: Number(e.target.value) })}
+              onChange={e =>
+                setForm ({...form, proficiency: Number (e.target.value)})}
               className="w-full accent-[var(--primary)] cursor-pointer"
             />
           </div>
@@ -171,14 +172,18 @@ export const SkillsManagementPage = () => {
             <input
               type="checkbox"
               checked={form.isVisible}
-              onChange={(e) => setForm({ ...form, isVisible: e.target.checked })}
+              onChange={e => setForm ({...form, isVisible: e.target.checked})}
               className="rounded border-[var(--border)] text-[var(--primary)]"
             />
             <span>Visible on Public Portfolio</span>
           </label>
 
           <div className="flex justify-end gap-2 pt-4 border-t border-[var(--border)]">
-            <Button variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setModalOpen (false)}
+            >
               Cancel
             </Button>
             <Button type="submit" variant="primary" size="sm" loading={saving}>
@@ -189,8 +194,8 @@ export const SkillsManagementPage = () => {
       </Modal>
 
       <ConfirmDialog
-        isOpen={Boolean(deleteId)}
-        onClose={() => setDeleteId(null)}
+        isOpen={Boolean (deleteId)}
+        onClose={() => setDeleteId (null)}
         onConfirm={confirmDelete}
         title="Delete Skill?"
         message="Are you sure you want to delete this technical skill from the portfolio?"
@@ -200,4 +205,3 @@ export const SkillsManagementPage = () => {
 };
 
 export default SkillsManagementPage;
-

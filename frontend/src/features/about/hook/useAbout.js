@@ -1,9 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
-import aboutApi from '../api/aboutApi';
+import { useQuery } from "@tanstack/react-query";
+import aboutApi from "../api/aboutApi";
 
 export const useAbout = () => {
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ['aboutData'],
+    queryKey: ["aboutData"],
     queryFn: async () => {
       const [profile, experience, achievements] = await Promise.all([
         aboutApi.getProfile().catch(() => null),

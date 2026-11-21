@@ -1,13 +1,13 @@
 export const initialSettingsState = {
-  websiteTitle: '',
-  websiteDescription: '',
-  logoText: 'Khushi',
-  contactEmail: '',
-  footerText: '',
+  websiteTitle: "",
+  websiteDescription: "",
+  logoText: "Khushi",
+  contactEmail: "",
+  footerText: "",
   socialLinks: {
-    github: '',
-    linkedin: '',
-    twitter: '',
+    github: "",
+    linkedin: "",
+    twitter: "",
   },
   homepageSections: {
     showAbout: true,
@@ -18,4 +18,3 @@ export const initialSettingsState = {
     showContact: true,
   },
 };
-

@@ -24,11 +24,11 @@ const settingSchema = new mongoose.Schema(
     },
     contactEmail: {
       type: String,
-      default: 'khushi.siddhapura@example.com',
+      default: 'khushisiddhapura2010@gmail.com',
     },
     socialLinks: {
-      github: { type: String, default: 'https://github.com' },
-      linkedin: { type: String, default: 'https://linkedin.com' },
+      github: { type: String, default: 'https://github.com/KhushiSiddhapura' },
+      linkedin: { type: String, default: 'https://www.linkedin.com/in/khushi-siddhapura-7247a0397' },
       twitter: { type: String, default: '' },
       instagram: { type: String, default: '' },
     },

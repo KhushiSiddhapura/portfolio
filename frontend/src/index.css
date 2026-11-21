@@ -24,29 +24,6 @@
     --danger: #DC2626;
   }
 
-  [data-theme="dark"] {
-    --background: #09090B;
-    --surface: #111113;
-    --surface-alt: #181522;
-    --card: #18181B;
-
-    --primary: #A78BFA;
-    --primary-hover: #C4B5FD;
-    --primary-soft: #2E2147;
-    --primary-border: #4C3573;
-
-    --text: #FAFAFA;
-    --text-secondary: #D4D4D8;
-    --text-muted: #A1A1AA;
-
-    --border: #27272A;
-    --border-strong: #3F3F46;
-
-    --success: #4ADE80;
-    --warning: #FBBF24;
-    --danger: #F87171;
-  }
-
   * {
     border-color: var(--border);
   }
@@ -188,8 +165,7 @@
 
   /* Only hide website navigation and non-print controls, NOT resume document header */
   .print\:hidden,
-  button,
-  .theme-toggle {
+  button {
     display: none !important;
   }
 
@@ -197,5 +173,50 @@
     padding: 0 !important;
     margin: 0 !important;
     max-width: 100% !important;
+  }
+
+  .resume-print-shell {
+    width: 186mm !important;
+    max-width: 186mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  .resume-a4-sheet {
+    width: 186mm !important;
+    max-width: 186mm !important;
+    min-height: 281mm !important;
+    padding: 8mm !important;
+    box-sizing: border-box !important;
+    overflow: hidden;
+  }
+
+  .resume-a4-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 58fr) minmax(0, 42fr) !important;
+    column-gap: 5mm !important;
+    row-gap: 0 !important;
+  }
+
+  .resume-a4-grid > div {
+    width: 100%;
+    min-width: 0 !important;
+  }
+
+  .resume-a4-grid > div:nth-child(1) {
+    grid-column: 1 !important;
+  }
+
+  .resume-a4-grid > div:nth-child(2) {
+    grid-column: 2 !important;
+  }
+
+  .resume-a4-sheet .resume-header {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+
+  .resume-a4-sheet section {
+    break-inside: avoid;
   }
 }

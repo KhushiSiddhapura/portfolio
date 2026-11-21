@@ -1,12 +1,12 @@
-import axiosInstance from '../../../../services/axiosInstance';
+import axiosInstance from "../../../../services/axiosInstance";
 
 export const adminAchievementsApi = {
   getAchievements: async () => {
-    const res = await axiosInstance.get('/admin/achievements');
+    const res = await axiosInstance.get("/admin/achievements");
     return res.data.data;
   },
   createAchievement: async (payload) => {
-    const res = await axiosInstance.post('/admin/achievements', payload);
+    const res = await axiosInstance.post("/admin/achievements", payload);
     return res.data.data;
   },
   updateAchievement: async (id, payload) => {
@@ -20,4 +20,3 @@ export const adminAchievementsApi = {
 };
 
 export default adminAchievementsApi;
-

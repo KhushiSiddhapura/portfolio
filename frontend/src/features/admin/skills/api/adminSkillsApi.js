@@ -1,12 +1,12 @@
-import axiosInstance from '../../../../services/axiosInstance';
+import axiosInstance from "../../../../services/axiosInstance";
 
 export const adminSkillsApi = {
   getSkills: async () => {
-    const res = await axiosInstance.get('/admin/skills');
+    const res = await axiosInstance.get("/admin/skills");
     return res.data.data;
   },
   createSkill: async (skillData) => {
-    const res = await axiosInstance.post('/admin/skills', skillData);
+    const res = await axiosInstance.post("/admin/skills", skillData);
     return res.data.data;
   },
   updateSkill: async (id, skillData) => {
@@ -20,4 +20,3 @@ export const adminSkillsApi = {
 };
 
 export default adminSkillsApi;
-

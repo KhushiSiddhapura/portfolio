@@ -14,4 +14,3 @@ export const initialDashboardState = {
   loading: true,
   error: null,
 };
-

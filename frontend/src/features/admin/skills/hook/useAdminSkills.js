@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
-import { toast } from 'react-toastify';
-import adminSkillsApi from '../api/adminSkillsApi';
-import { initialSkillForm } from '../state/adminSkillsState';
+import { useState, useEffect, useCallback } from "react";
+import { toast } from "react-toastify";
+import adminSkillsApi from "../api/adminSkillsApi";
+import { initialSkillForm } from "../state/adminSkillsState";
 
 export const useAdminSkills = () => {
   const [skills, setSkills] = useState([]);
@@ -18,7 +18,7 @@ export const useAdminSkills = () => {
       const items = await adminSkillsApi.getSkills();
       setSkills(items || []);
     } catch (err) {
-      toast.error('Failed to load skills');
+      toast.error("Failed to load skills");
     } finally {
       setLoading(false);
     }
@@ -48,7 +48,7 @@ export const useAdminSkills = () => {
   const handleSubmit = async (e) => {
     if (e && e.preventDefault) e.preventDefault();
     if (!form.name.trim()) {
-      toast.error('Skill name is required');
+      toast.error("Skill name is required");
       return;
     }
 
@@ -56,15 +56,15 @@ export const useAdminSkills = () => {
     try {
       if (editingSkill) {
         await adminSkillsApi.updateSkill(editingSkill._id, form);
-        toast.success('Skill updated successfully');
+        toast.success("Skill updated successfully");
       } else {
         await adminSkillsApi.createSkill(form);
-        toast.success('Skill added successfully');
+        toast.success("Skill added successfully");
       }
       setModalOpen(false);
       fetchSkills();
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to save skill');
+      toast.error(err.response?.data?.message || "Failed to save skill");
     } finally {
       setSaving(false);
     }
@@ -76,11 +76,15 @@ export const useAdminSkills = () => {
         isVisible: !skill.isVisible,
       });
       setSkills((prev) =>
-        prev.map((s) => (s._id === skill._id ? { ...s, isVisible: !s.isVisible } : s))
+        prev.map((s) =>
+          s._id === skill._id ? { ...s, isVisible: !s.isVisible } : s,
+        ),
       );
-      toast.success(`Skill visibility ${!skill.isVisible ? 'enabled' : 'disabled'}`);
+      toast.success(
+        `Skill visibility ${!skill.isVisible ? "enabled" : "disabled"}`,
+      );
     } catch (err) {
-      toast.error('Failed to toggle visibility');
+      toast.error("Failed to toggle visibility");
     }
   };
 
@@ -88,11 +92,11 @@ export const useAdminSkills = () => {
     if (!deleteId) return;
     try {
       await adminSkillsApi.deleteSkill(deleteId);
-      toast.success('Skill deleted successfully');
+      toast.success("Skill deleted successfully");
       setSkills(skills.filter((s) => s._id !== deleteId));
       setDeleteId(null);
     } catch (err) {
-      toast.error('Failed to delete skill');
+      toast.error("Failed to delete skill");
     }
   };
 
@@ -117,4 +121,3 @@ export const useAdminSkills = () => {
 };
 
 export default useAdminSkills;
-

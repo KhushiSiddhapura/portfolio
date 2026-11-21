@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   Download,
   Printer,
@@ -8,17 +7,16 @@ import {
   Linkedin,
   Github,
   MapPin,
-  ExternalLink,
-  Settings,
-  Calendar,
 } from 'lucide-react';
 import useResume from '../hook/useResume';
 import Loader from '../../../shared/ui/Loader';
 import Button from '../../../shared/ui/Button';
+import { useWebsiteSettings } from '../../../shared/context/WebsiteSettingsContext';
 
 export const ResumePage = () => {
   const { profile, resumeInfo, experience, skills, projects, achievements, loading, downloadOrPrint } =
     useResume();
+  const settings = useWebsiteSettings();
 
   const handlePrint = () => {
     window.print();
@@ -71,16 +69,13 @@ export const ResumePage = () => {
 
   return (
     <div className="w-full min-h-screen py-8 sm:py-12 bg-slate-100 text-zinc-900 transition-colors duration-200 print:py-0 print:bg-white print:min-h-0">
-      <div className="max-w-[920px] mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
+      <div className="resume-print-shell max-w-230 mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
         {/* Top Control Bar (Hidden during print) */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white shadow-sm print:hidden">
           <div className="space-y-1">
             <h1 className="text-lg sm:text-xl font-bold text-zinc-900 flex items-center gap-2">
               <span>{profile?.name || 'Khushi S Siddhapura'} — Curriculum Vitae</span>
             </h1>
-            <p className="text-xs text-zinc-500">
-              Two-column executive resume • Pure Light Theme • Live sync with Admin CMS
-            </p>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
@@ -105,7 +100,7 @@ export const ResumePage = () => {
         </div>
 
         {/* ================= RESUME A4 SHEET (ALWAYS LIGHT THEME) ================= */}
-        <div className="bg-white text-zinc-900 p-8 sm:p-12 rounded-xl border border-slate-200/90 shadow-xl print:p-0 print:border-none print:shadow-none print:rounded-none">
+        <div className="resume-a4-sheet bg-white text-zinc-900 p-8 sm:p-12 rounded-xl border border-slate-200/90 shadow-xl print:p-0 print:border-none print:shadow-none print:rounded-none">
           {/* 1. HEADER SECTION (Info on Left, Circular Portrait on Right) */}
           <div className="resume-header flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-zinc-200 print:border-zinc-300 print:flex">
             <div className="space-y-2 flex-1">
@@ -127,31 +122,31 @@ export const ResumePage = () => {
                 </a>
 
                 <a
-                  href={`mailto:${profile?.email || 'khushisiddhapura2010@gmail.com'}`}
+                  href={`mailto:${settings.contactEmail}`}
                   className="flex items-center gap-1.5 hover:text-[#7C3AED] transition-colors"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#7C3AED]" />
-                  <span>{profile?.email || 'khushisiddhapura2010@gmail.com'}</span>
+                  <span>{settings.contactEmail}</span>
                 </a>
 
                 <a
-                  href={profile?.socialLinks?.linkedin || 'https://linkedin.com/in/khushi-siddhapura-7247a0397'}
+                  href={settings.socialLinks.linkedin || undefined}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 hover:text-[#7C3AED] transition-colors"
                 >
                   <Linkedin className="w-3.5 h-3.5 text-[#7C3AED]" />
-                  <span>linkedin.com/in/khushi-siddhapura</span>
+                  <span>LinkedIn Profile</span>
                 </a>
 
                 <a
-                  href={profile?.socialLinks?.github || 'https://github.com/KhushiSiddhapura'}
+                  href={settings.socialLinks.github || undefined}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 hover:text-[#7C3AED] transition-colors"
                 >
                   <Github className="w-3.5 h-3.5 text-[#7C3AED]" />
-                  <span>github.com/KhushiSiddhapura</span>
+                  <span>GitHub Profile</span>
                 </a>
 
                 <div className="flex items-center gap-1.5">
@@ -165,7 +160,7 @@ export const ResumePage = () => {
             <div className="shrink-0 self-center sm:self-auto">
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-[#7C3AED] p-0.5 shadow-sm overflow-hidden bg-slate-50">
                 <img
-                  src={profile?.profileImage?.url || '/khushi.png'}
+                  src={'/khushi.png'}
                   alt={profile?.name || 'Khushi S Siddhapura'}
                   onError={(e) => {
                     e.currentTarget.onerror = null;
@@ -178,7 +173,7 @@ export const ResumePage = () => {
           </div>
 
           {/* 2. TWO-COLUMN LAYOUT BODY */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-6">
+          <div className="resume-a4-grid grid grid-cols-1 md:grid-cols-12 gap-8 pt-6">
             {/* ================= LEFT COLUMN (~58%) ================= */}
             <div className="md:col-span-7 space-y-7">
               {/* SUMMARY (Dynamically sourced from CMS) */}

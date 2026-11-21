@@ -19,7 +19,6 @@ import {
   Shield,
 } from 'lucide-react';
 import { logoutAdmin } from '../features/auth/state/authSlice';
-import ThemeToggle from '../shared/components/ThemeToggle';
 
 export const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -69,7 +68,6 @@ export const AdminLayout = () => {
           <span className="font-bold text-base text-[var(--text)]">CMS Dashboard</span>
         </div>
         <div className="flex items-center gap-2">
-          <ThemeToggle />
           <Link
             to="/"
             target="_blank"
@@ -178,7 +176,6 @@ export const AdminLayout = () => {
             </h1>
           </div>
           <div className="flex items-center gap-4">
-            <ThemeToggle />
             <Link
               to="/"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-[var(--text-secondary)] hover:text-[var(--primary)] hover:bg-[var(--surface)] border border-[var(--border)] transition-colors"
@@ -199,7 +196,7 @@ export const AdminLayout = () => {
         </header>
 
         {/* Page Content Viewport */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-[1300px] w-full mx-auto">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-325 w-full mx-auto">
           <Outlet />
         </main>
       </div>

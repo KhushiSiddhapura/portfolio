@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   GraduationCap,
@@ -22,7 +21,7 @@ export const AboutPage = () => {
 
   return (
     <div className="w-full py-12 md:py-20">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-8 space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
@@ -39,9 +38,9 @@ export const AboutPage = () => {
           </div>
 
           <div className="lg:col-span-4 flex justify-center lg:justify-end">
-            <div className="relative w-48 sm:w-56 aspect-[4/5] flex items-center justify-center animate-float">
+            <div className="relative w-48 sm:w-56 aspect-4/5 flex items-center justify-center animate-float">
               <img
-                src={profile?.profileImage?.url || '../../'}
+                src="/khushi.png"
                 alt={profile?.name || 'Khushi Siddhapura'}
                 className="w-full h-full object-contain drop-shadow-xl"
               />

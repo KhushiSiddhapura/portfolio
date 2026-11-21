@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
-import dashboardApi from '../api/dashboardApi';
-import { initialDashboardState } from '../state/dashboardState';
+import { useState, useEffect, useCallback } from "react";
+import dashboardApi from "../api/dashboardApi";
+import { initialDashboardState } from "../state/dashboardState";
 
 export const useDashboard = () => {
   const [data, setData] = useState(initialDashboardState);
@@ -20,7 +20,8 @@ export const useDashboard = () => {
       setData((prev) => ({
         ...prev,
         loading: false,
-        error: err.response?.data?.message || 'Failed to load dashboard metrics',
+        error:
+          err.response?.data?.message || "Failed to load dashboard metrics",
       }));
     }
   }, []);
@@ -36,4 +37,3 @@ export const useDashboard = () => {
 };
 
 export default useDashboard;
-

@@ -1,9 +1,16 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { loginAdmin, logoutAdmin, checkAuth, clearError } from '../state/authSlice';
+import { useSelector, useDispatch } from "react-redux";
+import {
+  loginAdmin,
+  logoutAdmin,
+  checkAuth,
+  clearError,
+} from "../state/authSlice";
 
 export const useAuth = () => {
   const dispatch = useDispatch();
-  const { user, token, isAuthenticated, loading, error } = useSelector((state) => state.auth);
+  const { user, token, isAuthenticated, loading, error } = useSelector(
+    (state) => state.auth,
+  );
 
   return {
     user,
@@ -19,4 +26,3 @@ export const useAuth = () => {
 };
 
 export default useAuth;
-

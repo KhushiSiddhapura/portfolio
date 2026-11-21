@@ -1,16 +1,16 @@
 import React from 'react';
-import { Award, Calendar, Trophy, Palette } from 'lucide-react';
+import {Award, Calendar, Trophy, Palette} from 'lucide-react';
 import useAchievements from '../hook/useAchievements';
 import Loader from '../../../shared/ui/Loader';
 
 export const AchievementsPage = () => {
-  const { achievements, loading } = useAchievements();
+  const {achievements, loading} = useAchievements ();
 
   if (loading) {
     return <Loader text="Loading achievements..." className="min-h-[50vh]" />;
   }
 
-  const getCategoryIcon = (category) => {
+  const getCategoryIcon = category => {
     switch (category) {
       case 'Competition':
         return Trophy;
@@ -23,7 +23,7 @@ export const AchievementsPage = () => {
 
   return (
     <div className="w-full py-12 md:py-20">
-      <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="max-w-250 mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-3">
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
             <Award className="w-3.5 h-3.5" />
@@ -38,8 +38,8 @@ export const AchievementsPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {achievements.map((item, idx) => {
-            const Icon = getCategoryIcon(item.category);
+          {achievements.map ((item, idx) => {
+            const Icon = getCategoryIcon (item.category);
             return (
               <div
                 key={item._id || idx}
@@ -64,14 +64,15 @@ export const AchievementsPage = () => {
                   </p>
                 </div>
 
-                {item.date && (
+                {item.date &&
                   <div className="pt-3 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--text-muted)]">
                     <span className="flex items-center gap-1.5 font-medium">
                       <Calendar className="w-3.5 h-3.5" /> {item.date}
                     </span>
-                    <span className="font-semibold text-[var(--primary)]">Verified Milestone</span>
-                  </div>
-                )}
+                    <span className="font-semibold text-[var(--primary)]">
+                      Verified Milestone
+                    </span>
+                  </div>}
               </div>
             );
           })}
@@ -82,4 +83,3 @@ export const AchievementsPage = () => {
 };
 
 export default AchievementsPage;
-

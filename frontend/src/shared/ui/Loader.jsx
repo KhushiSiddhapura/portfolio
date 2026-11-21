@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const Loader = ({ text = 'Loading...', size = 'md', className = '' }) => {
   const sizeMap = {
     sm: 'w-5 h-5 border-2',

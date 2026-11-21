@@ -9,9 +9,8 @@ export const initialHomeState = {
 };
 
 export const initialContactForm = {
-  name: '',
-  email: '',
-  subject: '',
-  message: '',
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
 };
-

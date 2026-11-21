@@ -1,31 +1,14 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
-  FileText,
   Github,
-  Linkedin,
-  Mail,
   ExternalLink,
   Code2,
   Sparkles,
-  Briefcase,
-  Award,
-  Send,
-  Flame,
-  Layers,
-  Database,
-  Terminal,
 } from 'lucide-react';
 import useHome from '../hook/useHome';
 import VisibleLongWave from '../../../shared/components/svg/VisibleLongWave';
-import WaveBottom from '../../../shared/components/svg/WaveBottom';
-import WaveTop from '../../../shared/components/svg/WaveTop';
-import CurvedDivider from '../../../shared/components/svg/CurvedDivider';
-import SectionTransition from '../../../shared/components/svg/SectionTransition';
-import OrganicShape from '../../../shared/components/svg/OrganicShape';
-import Loader, { Skeleton } from '../../../shared/ui/Loader';
-import Button from '../../../shared/ui/Button';
+import { Skeleton } from '../../../shared/ui/Loader';
 
 export const HomePage = () => {
   const {
@@ -44,16 +27,16 @@ export const HomePage = () => {
   return (
     <div className="w-full overflow-hidden">
       {/* 1. HERO SECTION WITH CENTER PHOTO & BALANCED TYPOGRAPHY */}
-      <section className="relative pb-24 md:pb-32 bg-[var(--background)] overflow-hidden max-w-full">
+      <section className="relative pb-24 md:pb-32 bg-(var(--background)) overflow-hidden max-w-full">
         {/* Ambient Dark Nebula / Soft Radiant Purple Glow in Center */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-tr from-purple-700/20 via-fuchsia-600/15 to-indigo-600/15 rounded-full blur-[130px] pointer-events-none select-none opacity-70 dark:opacity-50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-100 bg-linear-to-tr from-purple-700/20 via-fuchsia-600/15 to-indigo-600/15 rounded-full blur-[130px] pointer-events-none select-none opacity-70 dark:opacity-50" />
 
         {/* Center Stage Container with Overflow Guard */}
-        <div className="relative max-w-[1100px] mx-auto px-4 min-h-[400px] sm:min-h-[460px] md:min-h-[500px] flex flex-col items-center justify-end z-10 select-none overflow-hidden">
+        <div className="relative max-w-275 mx-auto px-4 min-h-100 sm:min-h-115 md:min-h-125 flex flex-col items-center justify-end z-10 select-none overflow-hidden">
           {/* Toned Down, Responsive Background Typography */}
-          <div className="absolute top-[24%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-full overflow-hidden text-center pointer-events-none select-none z-0 px-4">
+          <div className="absolute top-[20%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-full overflow-hidden text-center pointer-events-none select-none z-0 px-4">
             <h1
-              className="font-black tracking-tight uppercase leading-none select-none whitespace-nowrap bg-gradient-to-r from-purple-500/25 via-violet-400/20 to-indigo-500/25 dark:from-purple-400/15 dark:via-fuchsia-400/15 dark:to-indigo-400/15 bg-clip-text text-transparent"
+              className="font-black tracking-tight uppercase leading-none select-none whitespace-nowrap bg-linear-to-r from-purple-500/25 via-violet-400/20 to-indigo-500/25 dark:from-purple-400/15 dark:via-fuchsia-400/15 dark:to-indigo-400/15 bg-clip-text text-transparent"
               style={{ fontSize: 'clamp(1.5rem, 8vw, 7.5rem)' }}
             >
               KHUSHI SIDDHAPURA
@@ -65,7 +48,7 @@ export const HomePage = () => {
 
       {/* Ambient Aura */}
       <div className="absolute bottom-10 w-[75%] h-[65%]
-        bg-gradient-to-tr from-[var(--primary)]/20
+        bg-linear-to-tr from-[var(--primary)]/20
         via-purple-500/10 to-transparent rounded-full
         blur-3xl opacity-60 pointer-events-none"
       />
@@ -74,7 +57,7 @@ export const HomePage = () => {
         src="/khushi.png"
         alt={profile?.name || 'Khushi Siddhapura'}
         className="relative z-10 translate-y-20 sm:translate-y-24 md:translate-y-28
-  h-[380px] sm:h-[480px] md:h-[500px] lg:h-[560px]
+  h-95 sm:h-120 md:h-125 lg:h-140
   w-auto max-w-full object-contain object-bottom
   select-none pointer-events-none"
       />
@@ -88,7 +71,7 @@ export const HomePage = () => {
 
       {/* 2. ABOUT PREVIEW SECTION */}
       <section className="py-20 bg-[var(--surface)] relative">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 space-y-4">
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
@@ -164,7 +147,7 @@ export const HomePage = () => {
 
       {/* 3. FEATURED PROJECTS SECTION */}
       <section className="py-24 bg-[var(--background)] relative">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)] mb-2">
@@ -301,7 +284,7 @@ export const HomePage = () => {
 
       {/* 4. TECHNICAL SKILLS SECTION */}
       <section className="py-24 bg-[var(--surface)] relative">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
               <Code2 className="w-3.5 h-3.5" />
@@ -344,244 +327,8 @@ export const HomePage = () => {
           <VisibleLongWave fill="var(--background)" height="80px" accentColor="#5B21B6" secondaryColor="#7C3AED" />
         </div>
       </section>
-
-      {/* 5. EXPERIENCE & TIMELINE SECTION */}
-      <section className="py-24 bg-[var(--background)] relative">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-12 space-y-2">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
-              <Briefcase className="w-3.5 h-3.5" />
-              <span>Experience</span>
-            </div>
-            <h2 className="text-3xl font-extrabold text-[var(--text)] tracking-tight">
-              Internship & Developer Journey
-            </h2>
-          </div>
-
-          <div className="relative border-l-2 border-[var(--primary-border)] ml-3 sm:ml-4 pl-6 sm:pl-8 space-y-10">
-            {experience.map((item) => (
-              <div key={item._id} className="relative group">
-                <span className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[var(--background)] border-2 border-[var(--primary)] group-hover:scale-125 transition-transform" />
-
-                <div className="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-3">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <h3 className="font-bold text-base text-[var(--text)]">
-                      {item.position}
-                    </h3>
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-[var(--surface-alt)] text-[var(--primary)] border border-[var(--primary-border)] self-start sm:self-auto">
-                      {item.startDate} {item.endDate ? `- ${item.endDate}` : '(Current)'}
-                    </span>
-                  </div>
-
-                  <p className="text-xs font-medium text-[var(--primary)]">
-                    {item.organization} • {item.location || 'Online'}
-                  </p>
-
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    {item.description}
-                  </p>
-
-                  {item.technologies?.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-2">
-                      {item.technologies.map((t, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2 py-0.5 text-[11px] font-medium rounded-md bg-[var(--surface)] text-[var(--text-muted)] border border-[var(--border)]"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 inset-x-0">
-          <VisibleLongWave fill="var(--surface)" height="80px" accentColor="#7C3AED" secondaryColor="#A78BFA" />
-        </div>
-      </section>
-
-      {/* 6. ACHIEVEMENTS SECTION */}
-      <section className="py-24 bg-[var(--surface)] relative">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-14 space-y-2">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
-              <Award className="w-3.5 h-3.5" />
-              <span>Recognition</span>
-            </div>
-            <h2 className="text-3xl font-extrabold text-[var(--text)] tracking-tight">
-              Academic & Design Achievements
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {achievements.map((item, idx) => (
-              <div
-                key={item._id || idx}
-                className="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary-border)] transition-all space-y-3"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--surface-alt)] text-[var(--primary)] flex items-center justify-center font-bold text-sm">
-                    #{idx + 1}
-                  </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--primary)] bg-[var(--surface-alt)] px-2 py-1 rounded-md border border-[var(--primary-border)]">
-                    {item.category}
-                  </span>
-                </div>
-                <h3 className="font-bold text-base text-[var(--text)] leading-snug">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  {item.description}
-                </p>
-                {item.date && (
-                  <p className="text-[11px] font-medium text-[var(--text-muted)] pt-2 border-t border-[var(--border)]">
-                    {item.date}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 inset-x-0">
-          <VisibleLongWave fill="var(--background)" height="80px" accentColor="#6D28D9" secondaryColor="#8B5CF6" />
-        </div>
-      </section>
-
-      {/* 7. CONTACT SECTION */}
-      <section className="py-24 bg-[var(--background)] relative">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5 space-y-6">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
-                <Mail className="w-3.5 h-3.5" />
-                <span>Get In Touch</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[var(--text)] tracking-tight">
-                Let's Build Something Meaningful Together
-              </h2>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                Whether you have an internship opportunity, a project to collaborate on, or simply want to connect, feel free to drop a message.
-              </p>
-
-              <div className="space-y-4 pt-2">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--surface-alt)] text-[var(--primary)] flex items-center justify-center">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-[var(--text-muted)] block">Email</span>
-                    <a
-                      href={`mailto:${profile?.email || 'khushi.siddhapura@example.com'}`}
-                      className="text-sm font-semibold text-[var(--text)] hover:text-[var(--primary)]"
-                    >
-                      {profile?.email || 'khushi.siddhapura@example.com'}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--surface-alt)] text-[var(--primary)] flex items-center justify-center">
-                    <Linkedin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-[var(--text-muted)] block">LinkedIn</span>
-                    <a
-                      href={profile?.socialLinks?.linkedin || 'https://linkedin.com'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-semibold text-[var(--text)] hover:text-[var(--primary)]"
-                    >
-                      Khushi Siddhapura
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <form
-                onSubmit={handleContactSubmit}
-                className="p-6 sm:p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-xs space-y-4"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)] mb-1.5">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Jane Doe"
-                      value={contactForm.name}
-                      onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                      className="w-full rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm px-3.5 py-2.5 text-[var(--text)] focus:outline-none focus:border-[var(--primary)]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)] mb-1.5">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="jane@example.com"
-                      value={contactForm.email}
-                      onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                      className="w-full rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm px-3.5 py-2.5 text-[var(--text)] focus:outline-none focus:border-[var(--primary)]"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)] mb-1.5">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Internship / Collaboration / Inquiry"
-                    value={contactForm.subject}
-                    onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
-                    className="w-full rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm px-3.5 py-2.5 text-[var(--text)] focus:outline-none focus:border-[var(--primary)]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)] mb-1.5">
-                    Your Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    required
-                    placeholder="Write your message here..."
-                    value={contactForm.message}
-                    onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                    className="w-full rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm px-3.5 py-2.5 text-[var(--text)] focus:outline-none focus:border-[var(--primary)] resize-y"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="md"
-                  loading={submittingContact}
-                  icon={Send}
-                  className="w-full sm:w-auto"
-                >
-                  Send Message
-                </Button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
 
 export default HomePage;
-

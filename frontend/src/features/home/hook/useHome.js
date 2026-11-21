@@ -1,23 +1,24 @@
-import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { toast } from 'react-toastify';
-import homeApi from '../api/homeApi';
-import { initialContactForm } from '../state/homeState';
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+import homeApi from "../api/homeApi";
+import { initialContactForm } from "../state/homeState";
 
 export const useHome = () => {
   const [contactForm, setContactForm] = useState(initialContactForm);
   const [submittingContact, setSubmittingContact] = useState(false);
 
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ['homeData'],
+    queryKey: ["homeData"],
     queryFn: async () => {
-      const [profile, featuredProjects, skillsRes, experience, achievements] = await Promise.all([
-        homeApi.getProfile().catch(() => null),
-        homeApi.getFeaturedProjects().catch(() => []),
-        homeApi.getSkills().catch(() => ({ grouped: [] })),
-        homeApi.getExperience().catch(() => []),
-        homeApi.getAchievements().catch(() => []),
-      ]);
+      const [profile, featuredProjects, skillsRes, experience, achievements] =
+        await Promise.all([
+          homeApi.getProfile().catch(() => null),
+          homeApi.getFeaturedProjects().catch(() => []),
+          homeApi.getSkills().catch(() => ({ grouped: [] })),
+          homeApi.getExperience().catch(() => []),
+          homeApi.getAchievements().catch(() => []),
+        ]);
 
       return {
         profile,
@@ -31,19 +32,26 @@ export const useHome = () => {
 
   const handleContactSubmit = async (e) => {
     if (e && e.preventDefault) e.preventDefault();
-    if (!contactForm.name.trim() || !contactForm.email.trim() || !contactForm.message.trim()) {
-      toast.error('Please fill in your name, email, and message.');
+    if (
+      !contactForm.name.trim() ||
+      !contactForm.email.trim() ||
+      !contactForm.message.trim()
+    ) {
+      toast.error("Please fill in your name, email, and message.");
       return false;
     }
 
     setSubmittingContact(true);
     try {
       const res = await homeApi.sendMessage(contactForm);
-      toast.success(res.message || 'Message sent successfully!');
+      toast.success(res.message || "Message sent successfully!");
       setContactForm(initialContactForm);
       return true;
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to send message. Please try again.');
+      toast.error(
+        err.response?.data?.message ||
+          "Failed to send message. Please try again.",
+      );
       return false;
     } finally {
       setSubmittingContact(false);

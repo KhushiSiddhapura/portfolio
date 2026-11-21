@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import { loginAdmin, clearError } from '../../../auth/state/authSlice';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { loginAdmin, clearError } from "../../../auth/state/authSlice";
 
 export const useAdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuthenticated, loading, error } = useSelector((state) => state.auth);
+  const { isAuthenticated, loading, error } = useSelector(
+    (state) => state.auth,
+  );
 
   const {
     register,
@@ -17,14 +19,14 @@ export const useAdminLogin = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
   });
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/admin', { replace: true });
+      navigate("/admin", { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
@@ -37,11 +39,11 @@ export const useAdminLogin = () => {
 
   const onLogin = async (data) => {
     const result = await dispatch(
-      loginAdmin({ email: data.email.trim(), password: data.password })
+      loginAdmin({ email: data.email.trim(), password: data.password }),
     );
     if (loginAdmin.fulfilled.match(result)) {
-      toast.success('Welcome back, Admin!');
-      navigate('/admin');
+      toast.success("Welcome back, Admin!");
+      navigate("/admin");
     }
   };
 

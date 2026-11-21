@@ -1,9 +1,10 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { useWebsiteSettings } from '../context/WebsiteSettingsContext';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const settings = useWebsiteSettings();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -11,7 +12,7 @@ export const Footer = () => {
 
   return (
     <footer className="w-full border-t border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)] transition-colors print:hidden">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           {/* Brand Identity */}
           <div className="md:col-span-2 space-y-3">
@@ -29,7 +30,7 @@ export const Footer = () => {
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://github.com"
+                href={settings.socialLinks.github || undefined}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
@@ -38,7 +39,7 @@ export const Footer = () => {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com"
+                href={settings.socialLinks.linkedin || undefined}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
@@ -46,13 +47,13 @@ export const Footer = () => {
               >
                 <Linkedin className="w-4 h-4" />
               </a>
-              <Link
-                to="/contact"
+              <a
+                href={`mailto:${settings.contactEmail}`}
                 aria-label="Contact Khushi"
                 className="w-9 h-9 rounded-lg border border-[var(--border)] bg-[var(--card)] hover:border-[var(--primary)] hover:text-[var(--primary)] flex items-center justify-center transition-colors"
               >
                 <Mail className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -117,7 +118,6 @@ export const Footer = () => {
         <div className="pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
           <p>© {currentYear} Khushi Siddhapura. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <span>Built with MERN Stack & Tailwind CSS</span>
             <button
               onClick={scrollToTop}
               className="p-1.5 rounded-md hover:bg-[var(--card)] hover:text-[var(--text)] transition-colors flex items-center gap-1"

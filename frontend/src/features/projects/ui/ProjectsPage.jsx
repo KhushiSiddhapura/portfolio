@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Code2, ArrowRight, Github, ExternalLink } from 'lucide-react';
+import { Search, Code2, ArrowRight, ExternalLink, Github } from 'lucide-react';
 import useProjects from '../hook/useProjects';
 import { projectCategories } from '../state/projectsState';
 import { Skeleton } from '../../../shared/ui/Loader';
@@ -29,7 +28,7 @@ export const ProjectsPage = () => {
 
   return (
     <div className="w-full py-12 md:py-20">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="space-y-3">
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
             <Code2 className="w-3.5 h-3.5" />
@@ -62,7 +61,7 @@ export const ProjectsPage = () => {
             ))}
           </div>
 
-          <form onSubmit={handleSearchSubmit} className="relative min-w-[260px]">
+          <form onSubmit={handleSearchSubmit} className="relative min-w-65">
             <input
               type="text"
               placeholder="Search by title, tech..."
@@ -174,6 +173,7 @@ export const ProjectsPage = () => {
                         className="text-[var(--text-muted)] hover:text-[var(--text)] p-1"
                       >
                         <Github className="w-3.5 h-3.5" />
+                        
                       </a>
                     )}
                     {project.links?.live && (

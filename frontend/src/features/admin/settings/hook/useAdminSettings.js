@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
-import { toast } from 'react-toastify';
-import adminSettingsApi from '../api/adminSettingsApi';
-import { initialSettingsState } from '../state/adminSettingsState';
+import { useState, useEffect, useCallback } from "react";
+import { toast } from "react-toastify";
+import adminSettingsApi from "../api/adminSettingsApi";
+import { initialSettingsState } from "../state/adminSettingsState";
 
 export const useAdminSettings = () => {
   const [settings, setSettings] = useState(initialSettingsState);
@@ -27,7 +27,7 @@ export const useAdminSettings = () => {
         });
       }
     } catch (err) {
-      toast.error('Failed to load settings');
+      toast.error("Failed to load settings");
     } finally {
       setLoading(false);
     }
@@ -66,9 +66,9 @@ export const useAdminSettings = () => {
     setSaving(true);
     try {
       await adminSettingsApi.updateSettings(settings);
-      toast.success('Website settings updated successfully');
+      toast.success("Website settings updated successfully");
     } catch (err) {
-      toast.error('Failed to update website settings');
+      toast.error("Failed to update website settings");
     } finally {
       setSaving(false);
     }
@@ -87,4 +87,3 @@ export const useAdminSettings = () => {
 };
 
 export default useAdminSettings;
-

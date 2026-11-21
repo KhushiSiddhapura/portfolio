@@ -1,5 +1,4 @@
-import React from 'react';
-import { Briefcase, Building, Calendar, MapPin } from 'lucide-react';
+import { Briefcase, Building, MapPin } from 'lucide-react';
 import useExperience from '../hook/useExperience';
 import Loader from '../../../shared/ui/Loader';
 
@@ -12,7 +11,7 @@ export const ExperiencePage = () => {
 
   return (
     <div className="w-full py-12 md:py-20">
-      <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="max-w-250 mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-3">
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--primary)]">
             <Briefcase className="w-3.5 h-3.5" />
@@ -29,7 +28,7 @@ export const ExperiencePage = () => {
         <div className="relative border-l-2 border-[var(--primary-border)] ml-3 sm:ml-4 pl-6 sm:pl-8 space-y-10">
           {experience.map((item) => (
             <div key={item._id} className="relative group">
-              <span className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[var(--background)] border-2 border-[var(--primary)] group-hover:scale-125 transition-transform" />
+              <span className="absolute -left-7.75 sm:-left-9.75 top-1.5 w-4 h-4 rounded-full bg-[var(--background)] border-2 border-[var(--primary)] group-hover:scale-125 transition-transform" />
 
               <div className="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-3 shadow-2xs">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">

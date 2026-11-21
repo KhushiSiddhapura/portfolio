@@ -409,10 +409,10 @@ export const seedInitialData = async () => {
         websiteTitle: 'Khushi Siddhapura | Full Stack Developer Portfolio',
         websiteDescription: 'Portfolio of Khushi Siddhapura, Full Stack Developer and IT Student at BVM Gujarat.',
         logoText: 'Khushi',
-        contactEmail: 'khushi.siddhapura@example.com',
+        contactEmail: 'khushisiddhapura2010@gmail.com',
         socialLinks: {
-          github: 'https://github.com',
-          linkedin: 'https://linkedin.com',
+          github: 'https://github.com/KhushiSiddhapura',
+          linkedin: 'https://www.linkedin.com/in/khushi-siddhapura-7247a0397',
           twitter: '',
           instagram: '',
         },

@@ -146,8 +146,8 @@ export const ProjectsListPage = () => {
                         onClick={() => handleToggleStatus(project._id, project.status)}
                         className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
                           project.status === 'published'
-                            ? 'bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800/40'
-                            : 'bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-800/40'
+                            ? 'bg-emerald-50 text-emerald-700'
+                            : 'bg-amber-50 text-amber-700'
                         }`}
                         title="Click to toggle status"
                       >
@@ -166,7 +166,7 @@ export const ProjectsListPage = () => {
                         onClick={() => handleToggleFeatured(project._id, project.featured)}
                         className={`p-1.5 rounded-md transition-colors cursor-pointer ${
                           project.featured
-                            ? 'text-amber-500 bg-amber-50 dark:bg-amber-950/30'
+                            ? 'text-amber-500 bg-amber-50'
                             : 'text-[var(--text-muted)] hover:text-amber-500'
                         }`}
                         title={project.featured ? 'Featured on homepage' : 'Not featured'}

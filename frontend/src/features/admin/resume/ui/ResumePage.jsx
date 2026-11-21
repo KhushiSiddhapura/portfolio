@@ -14,7 +14,6 @@ import {
   Code2,
   FolderGit2,
   Award,
-  GraduationCap,
 } from 'lucide-react';
 import useAdminResume from '../hook/useAdminResume';
 import Loader from '../../../../shared/ui/Loader';
@@ -203,9 +202,9 @@ export const ResumeManagementPage = () => {
         </h3>
 
         {profile?.resumeUrl ? (
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-emerald-200 dark:border-emerald-800/40 bg-emerald-50 dark:bg-emerald-950/20">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-emerald-200 bg-emerald-50">
             <div className="space-y-1">
-              <span className="text-xs font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+              <span className="text-xs font-bold text-emerald-800 flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 PDF File Active & Synced
               </span>
@@ -227,7 +226,7 @@ export const ResumeManagementPage = () => {
             </div>
           </div>
         ) : (
-          <div className="p-4 rounded-xl border border-amber-200 dark:border-amber-800/40 bg-amber-50 dark:bg-amber-950/20 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-2.5">
+          <div className="p-4 rounded-xl border border-amber-200 bg-amber-50 text-xs text-amber-900 flex items-start gap-2.5">
             <AlertCircle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
             <span>
               No custom physical PDF uploaded yet. The "Download PDF" button will use your browser's direct printable PDF engine.

@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import projectsApi from '../api/projectsApi';
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import projectsApi from "../api/projectsApi";
 
-export const useProjects = (initialCategory = 'All') => {
-  const [search, setSearch] = useState('');
+export const useProjects = (initialCategory = "All") => {
+  const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [page, setPage] = useState(1);
 
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ['projects', selectedCategory, search, page],
+    queryKey: ["projects", selectedCategory, search, page],
     queryFn: async () => {
       const params = {
         page,
         limit: 9,
       };
-      if (selectedCategory !== 'All') params.category = selectedCategory;
+      if (selectedCategory !== "All") params.category = selectedCategory;
       if (search.trim()) params.search = search.trim();
 
       const res = await projectsApi.getProjects(params);
@@ -33,7 +33,7 @@ export const useProjects = (initialCategory = 'All') => {
     totalPages: data?.totalPages || 1,
     currentPage: data?.currentPage || page,
     loading: isLoading,
-    error: error ? (error.response?.data?.message || error.message) : null,
+    error: error ? error.response?.data?.message || error.message : null,
     search,
     setSearch,
     selectedCategory,

@@ -1,60 +1,60 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import authApi from '../api/authApi';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import authApi from "../api/authApi";
 
 export const loginAdmin = createAsyncThunk(
-  'auth/login',
+  "auth/login",
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const data = await authApi.login({ email, password });
       const { user, token } = data;
-      localStorage.setItem('khushi_portfolio_token', token);
-      localStorage.setItem('khushi_portfolio_user', JSON.stringify(user));
+      localStorage.setItem("khushi_portfolio_token", token);
+      localStorage.setItem("khushi_portfolio_user", JSON.stringify(user));
       return { user, token };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || 'Failed to authenticate admin'
+        error.response?.data?.message || "Failed to authenticate admin",
       );
     }
-  }
+  },
 );
 
 export const checkAuth = createAsyncThunk(
-  'auth/checkAuth',
+  "auth/checkAuth",
   async (_, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem('khushi_portfolio_token');
-      if (!token) throw new Error('No token found');
+      const token = localStorage.getItem("khushi_portfolio_token");
+      if (!token) throw new Error("No token found");
       const data = await authApi.getMe();
       return { user: data.user, token };
     } catch (error) {
-      localStorage.removeItem('khushi_portfolio_token');
-      localStorage.removeItem('khushi_portfolio_user');
-      return rejectWithValue('Session expired');
+      localStorage.removeItem("khushi_portfolio_token");
+      localStorage.removeItem("khushi_portfolio_user");
+      return rejectWithValue("Session expired");
     }
-  }
+  },
 );
 
-export const logoutAdmin = createAsyncThunk('auth/logout', async () => {
+export const logoutAdmin = createAsyncThunk("auth/logout", async () => {
   try {
     await authApi.logout();
   } catch (err) {
-    console.error('Logout error:', err.message);
+    console.error("Logout error:", err.message);
   } finally {
-    localStorage.removeItem('khushi_portfolio_token');
-    localStorage.removeItem('khushi_portfolio_user');
+    localStorage.removeItem("khushi_portfolio_token");
+    localStorage.removeItem("khushi_portfolio_user");
   }
 });
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem('khushi_portfolio_user') || 'null'),
-  token: localStorage.getItem('khushi_portfolio_token') || null,
-  isAuthenticated: Boolean(localStorage.getItem('khushi_portfolio_token')),
+  user: JSON.parse(localStorage.getItem("khushi_portfolio_user") || "null"),
+  token: localStorage.getItem("khushi_portfolio_token") || null,
+  isAuthenticated: Boolean(localStorage.getItem("khushi_portfolio_token")),
   loading: false,
   error: null,
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     clearError: (state) => {
@@ -101,4 +101,3 @@ const authSlice = createSlice({
 
 export const { clearError } = authSlice.actions;
 export default authSlice.reducer;
-

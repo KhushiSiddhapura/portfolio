@@ -1,11 +1,11 @@
 export const projectCategories = [
-  'All',
-  'Full Stack',
-  'Frontend',
-  'Backend',
-  'AI / ML',
-  'Academic',
-  'UI / UX',
+  "All",
+  "Full Stack",
+  "Frontend",
+  "Backend",
+  "AI / ML",
+  "Academic",
+  "UI / UX",
 ];
 
 export const initialProjectsListState = {
@@ -23,4 +23,3 @@ export const initialProjectDetailState = {
   loading: true,
   error: null,
 };
-

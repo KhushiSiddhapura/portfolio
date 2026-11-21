@@ -1,7 +1,6 @@
 export const initialContactFormState = {
-  name: '',
-  email: '',
-  subject: '',
-  message: '',
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
 };
-

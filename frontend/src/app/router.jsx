@@ -1,6 +1,5 @@
-import React from 'react';
-import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import {createBrowserRouter, Navigate, Outlet} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 // Layouts
 import PublicLayout from '../layouts/PublicLayout';
@@ -21,17 +20,20 @@ import AdminLoginPage from '../features/admin/auth/ui/AdminLoginPage';
 import DashboardPage from '../features/admin/dashboard/ui/DashboardPage';
 import ProfileManagementPage from '../features/admin/profile/ui/ProfilePage';
 import ProjectsListPage from '../features/admin/projects/ui/ProjectsListPage';
-import ProjectBuilderPage from '../features/admin/projects/ui/ProjectBuilderPage';
+import ProjectBuilderPage
+  from '../features/admin/projects/ui/ProjectBuilderPage';
 import SkillsManagementPage from '../features/admin/skills/ui/SkillsPage';
-import ExperienceManagementPage from '../features/admin/experience/ui/ExperiencePage';
-import AchievementsManagementPage from '../features/admin/achievements/ui/AchievementsPage';
+import ExperienceManagementPage
+  from '../features/admin/experience/ui/ExperiencePage';
+import AchievementsManagementPage
+  from '../features/admin/achievements/ui/AchievementsPage';
 import ResumeManagementPage from '../features/admin/resume/ui/ResumePage';
 import MessagesManagementPage from '../features/admin/messages/ui/MessagesPage';
 import WebsiteSettingsPage from '../features/admin/settings/ui/SettingsPage';
 
 // Protected Route Guard for Admin Routes
 const ProtectedAdminRoute = () => {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const {isAuthenticated} = useSelector (state => state.auth);
 
   if (!isAuthenticated) {
     return <Navigate to="/admin/login" replace />;
@@ -59,21 +61,21 @@ const NotFoundPage = () => (
   </div>
 );
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter ([
   // Public Website Experience
   {
     path: '/',
     element: <PublicLayout />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: 'about', element: <AboutPage /> },
-      { path: 'projects', element: <ProjectsPage /> },
-      { path: 'projects/:slug', element: <ProjectDetailPage /> },
-      { path: 'experience', element: <ExperiencePage /> },
-      { path: 'achievements', element: <AchievementsPage /> },
-      { path: 'contact', element: <ContactPage /> },
-      { path: 'resume', element: <ResumePage /> },
-      { path: '*', element: <NotFoundPage /> },
+      {index: true, element: <HomePage />},
+      {path: 'about', element: <AboutPage />},
+      {path: 'projects', element: <ProjectsPage />},
+      {path: 'projects/:slug', element: <ProjectDetailPage />},
+      {path: 'experience', element: <ExperiencePage />},
+      {path: 'achievements', element: <AchievementsPage />},
+      {path: 'contact', element: <ContactPage />},
+      {path: 'resume', element: <ResumePage />},
+      {path: '*', element: <NotFoundPage />},
     ],
   },
 
@@ -91,17 +93,17 @@ export const router = createBrowserRouter([
       {
         element: <AdminLayout />,
         children: [
-          { index: true, element: <DashboardPage /> },
-          { path: 'profile', element: <ProfileManagementPage /> },
-          { path: 'projects', element: <ProjectsListPage /> },
-          { path: 'projects/new', element: <ProjectBuilderPage /> },
-          { path: 'projects/edit/:id', element: <ProjectBuilderPage /> },
-          { path: 'skills', element: <SkillsManagementPage /> },
-          { path: 'experience', element: <ExperienceManagementPage /> },
-          { path: 'achievements', element: <AchievementsManagementPage /> },
-          { path: 'resume', element: <ResumeManagementPage /> },
-          { path: 'messages', element: <MessagesManagementPage /> },
-          { path: 'settings', element: <WebsiteSettingsPage /> },
+          {index: true, element: <DashboardPage />},
+          {path: 'profile', element: <ProfileManagementPage />},
+          {path: 'projects', element: <ProjectsListPage />},
+          {path: 'projects/new', element: <ProjectBuilderPage />},
+          {path: 'projects/edit/:id', element: <ProjectBuilderPage />},
+          {path: 'skills', element: <SkillsManagementPage />},
+          {path: 'experience', element: <ExperienceManagementPage />},
+          {path: 'achievements', element: <AchievementsManagementPage />},
+          {path: 'resume', element: <ResumeManagementPage />},
+          {path: 'messages', element: <MessagesManagementPage />},
+          {path: 'settings', element: <WebsiteSettingsPage />},
         ],
       },
     ],

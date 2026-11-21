@@ -3,4 +3,3 @@ export const initialAchievementsState = {
   loading: true,
   error: null,
 };
-

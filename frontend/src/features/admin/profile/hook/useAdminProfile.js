@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
-import { toast } from 'react-toastify';
-import adminProfileApi from '../api/adminProfileApi';
+import { useState, useEffect, useCallback } from "react";
+import { toast } from "react-toastify";
+import adminProfileApi from "../api/adminProfileApi";
 
 export const useAdminProfile = () => {
   const [profile, setProfile] = useState(null);
@@ -13,7 +13,7 @@ export const useAdminProfile = () => {
       const data = await adminProfileApi.getProfile();
       setProfile(data);
     } catch (err) {
-      toast.error('Failed to load profile details');
+      toast.error("Failed to load profile details");
     } finally {
       setLoading(false);
     }
@@ -29,10 +29,10 @@ export const useAdminProfile = () => {
     try {
       const updated = await adminProfileApi.updateProfile(profile);
       setProfile(updated);
-      toast.success('Profile information updated successfully');
+      toast.success("Profile information updated successfully");
       return true;
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to update profile');
+      toast.error(err.response?.data?.message || "Failed to update profile");
       return false;
     } finally {
       setSaving(false);
@@ -45,10 +45,10 @@ export const useAdminProfile = () => {
       education: [
         ...(prev.education || []),
         {
-          institution: 'Birla Vishvakarma Mahavidyalaya (BVM), Gujarat',
-          degree: 'B.Tech in Information Technology',
-          duration: 'Pursuing',
-          description: '',
+          institution: "Birla Vishvakarma Mahavidyalaya (BVM), Gujarat",
+          degree: "B.Tech in Information Technology",
+          duration: "Pursuing",
+          description: "",
         },
       ],
     }));
@@ -74,4 +74,3 @@ export const useAdminProfile = () => {
 };
 
 export default useAdminProfile;
-

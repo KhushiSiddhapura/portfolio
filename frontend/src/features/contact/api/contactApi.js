@@ -1,11 +1,10 @@
-import axiosInstance from '../../../services/axiosInstance';
+import axiosInstance from "../../../services/axiosInstance";
 
 export const contactApi = {
   sendMessage: async (payload) => {
-    const res = await axiosInstance.post('/messages', payload);
+    const res = await axiosInstance.post("/messages", payload);
     return res.data;
   },
 };
 
 export default contactApi;
-

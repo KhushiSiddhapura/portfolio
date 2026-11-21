@@ -33,7 +33,7 @@ export const ProjectDetailPage = () => {
 
   if (error || !project) {
     return (
-      <div className="max-w-[1200px] mx-auto px-4 py-24 text-center space-y-4">
+      <div className="max-w-300 mx-auto px-4 py-24 text-center space-y-4">
         <h2 className="text-2xl font-bold text-[var(--text)]">Project Not Found</h2>
         <p className="text-sm text-[var(--text-muted)]">
           {error || 'This project might be unpublished or under construction.'}
@@ -53,7 +53,7 @@ export const ProjectDetailPage = () => {
 
   return (
     <div className="w-full py-12 md:py-16">
-      <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div className="max-w-250 mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="flex items-center justify-between">
           <Link
             to="/projects"
@@ -163,7 +163,7 @@ export const ProjectDetailPage = () => {
             <img
               src={project.coverImage.url}
               alt={project.title}
-              className="w-full h-auto max-h-[500px] object-cover"
+              className="w-full h-auto max-h-125 object-cover"
             />
           </div>
         )}

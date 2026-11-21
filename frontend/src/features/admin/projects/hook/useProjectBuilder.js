@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import adminProjectsApi from '../api/adminProjectsApi';
-import { initialProjectBuilderSettings } from '../state/adminProjectsState';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import adminProjectsApi from "../api/adminProjectsApi";
+import { initialProjectBuilderSettings } from "../state/adminProjectsState";
 
 export const useProjectBuilder = (id) => {
   const navigate = useNavigate();
@@ -20,27 +20,29 @@ export const useProjectBuilder = (id) => {
         try {
           const p = await adminProjectsApi.getProjectById(id);
           setSettings({
-            title: p.title || '',
-            slug: p.slug || '',
-            shortDescription: p.shortDescription || '',
-            fullDescription: p.fullDescription || '',
-            category: p.category || 'Full Stack',
-            organization: p.organization || '',
-            role: p.role || '',
-            duration: p.duration || '',
-            technologies: Array.isArray(p.technologies) ? p.technologies.join(', ') : '',
-            coverImage: p.coverImage || { url: '', public_id: '' },
+            title: p.title || "",
+            slug: p.slug || "",
+            shortDescription: p.shortDescription || "",
+            fullDescription: p.fullDescription || "",
+            category: p.category || "Full Stack",
+            organization: p.organization || "",
+            role: p.role || "",
+            duration: p.duration || "",
+            technologies: Array.isArray(p.technologies)
+              ? p.technologies.join(", ")
+              : "",
+            coverImage: p.coverImage || { url: "", public_id: "" },
             links: {
-              github: p.links?.github || '',
-              live: p.links?.live || '',
+              github: p.links?.github || "",
+              live: p.links?.live || "",
             },
-            status: p.status || 'draft',
+            status: p.status || "draft",
             featured: Boolean(p.featured),
           });
           setBlocks(p.contentBlocks || []);
         } catch (err) {
-          toast.error('Failed to load project details');
-          navigate('/admin/projects');
+          toast.error("Failed to load project details");
+          navigate("/admin/projects");
         } finally {
           setLoading(false);
         }
@@ -54,12 +56,13 @@ export const useProjectBuilder = (id) => {
       const autoSlug = newTitle
         .toLowerCase()
         .trim()
-        .replace(/[\s\W-]+/g, '-')
-        .replace(/^-+|-+$/g, '');
+        .replace(/[\s\W-]+/g, "-")
+        .replace(/^-+|-+$/g, "");
       return {
         ...prev,
         title: newTitle,
-        slug: !isEditing && (!prev.slug || prev.slug === '') ? autoSlug : prev.slug,
+        slug:
+          !isEditing && (!prev.slug || prev.slug === "") ? autoSlug : prev.slug,
       };
     });
   };
@@ -69,66 +72,78 @@ export const useProjectBuilder = (id) => {
     let defaultData = {};
 
     switch (type) {
-      case 'heading':
-        defaultData = { text: 'New Section Title', level: 2 };
+      case "heading":
+        defaultData = { text: "New Section Title", level: 2 };
         break;
-      case 'paragraph':
-        defaultData = { text: 'Write your project content description here...' };
-        break;
-      case 'image':
-        defaultData = { url: '', caption: '' };
-        break;
-      case 'gallery':
-        defaultData = { title: 'Project Screenshots', images: [{ url: '', caption: '' }] };
-        break;
-      case 'video':
-        defaultData = { url: '', title: 'Demo Walkthrough' };
-        break;
-      case 'feature-list':
+      case "paragraph":
         defaultData = {
-          title: 'Key Implemented Features',
-          items: ['First key feature description', 'Second architectural capability'],
+          text: "Write your project content description here...",
         };
         break;
-      case 'technology-list':
+      case "image":
+        defaultData = { url: "", caption: "" };
+        break;
+      case "gallery":
         defaultData = {
-          title: 'Technologies Applied',
-          technologies: ['React.js', 'Node.js', 'MongoDB'],
+          title: "Project Screenshots",
+          images: [{ url: "", caption: "" }],
         };
         break;
-      case 'code-block':
+      case "video":
+        defaultData = { url: "", title: "Demo Walkthrough" };
+        break;
+      case "feature-list":
         defaultData = {
-          language: 'javascript',
-          filename: 'controller.js',
+          title: "Key Implemented Features",
+          items: [
+            "First key feature description",
+            "Second architectural capability",
+          ],
+        };
+        break;
+      case "technology-list":
+        defaultData = {
+          title: "Technologies Applied",
+          technologies: ["React.js", "Node.js", "MongoDB"],
+        };
+        break;
+      case "code-block":
+        defaultData = {
+          language: "javascript",
+          filename: "controller.js",
           code: '// Example code snippet\nconst express = require("express");\nconst app = express();',
         };
         break;
-      case 'quote':
+      case "quote":
         defaultData = {
-          quote: 'Building this project deepened my understanding of scalable web architecture.',
-          author: 'Khushi Siddhapura',
+          quote:
+            "Building this project deepened my understanding of scalable web architecture.",
+          author: "Khushi Siddhapura",
         };
         break;
-      case 'architecture-image':
+      case "architecture-image":
         defaultData = {
-          title: 'System Architecture & Data Flow',
-          description: 'Client layer communicating with Express REST APIs and MongoDB Atlas database.',
-          url: '',
+          title: "System Architecture & Data Flow",
+          description:
+            "Client layer communicating with Express REST APIs and MongoDB Atlas database.",
+          url: "",
         };
         break;
-      case 'two-column':
+      case "two-column":
         defaultData = {
-          leftTitle: 'Problem Statement',
-          leftContent: 'Manual tracking was prone to discrepancies and slow queries.',
-          rightTitle: 'Engineered Solution',
-          rightContent: 'A centralized portal with automated validation and structured reporting.',
+          leftTitle: "Problem Statement",
+          leftContent:
+            "Manual tracking was prone to discrepancies and slow queries.",
+          rightTitle: "Engineered Solution",
+          rightContent:
+            "A centralized portal with automated validation and structured reporting.",
         };
         break;
-      case 'callout':
+      case "callout":
         defaultData = {
-          type: 'info',
-          title: 'Design Note',
-          text: 'Highlighted achievement or implementation constraint.',
+          type: "info",
+          title: "Design Note",
+          text: "Highlighted achievement or implementation constraint.",
         };
         break;
       default:
@@ -174,7 +189,7 @@ export const useProjectBuilder = (id) => {
     const updated = [...blocks];
     updated.splice(index + 1, 0, clone);
     setBlocks(updated);
-    toast.info('Block duplicated');
+    toast.info("Block duplicated");
   };
 
   const deleteBlock = (index) => {
@@ -192,14 +207,17 @@ export const useProjectBuilder = (id) => {
 
   const handleSave = async (targetStatus) => {
     if (!settings.title.trim()) {
-      toast.error('Project title is required');
+      toast.error("Project title is required");
       return;
     }
 
     setSaving(true);
     try {
       const techArray = settings.technologies
-        ? settings.technologies.split(',').map((t) => t.trim()).filter(Boolean)
+        ? settings.technologies
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean)
         : [];
 
       const orderedBlocks = blocks.map((b, i) => ({
@@ -234,7 +252,7 @@ export const useProjectBuilder = (id) => {
         navigate(`/admin/projects/edit/${created._id}`);
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to save project');
+      toast.error(err.response?.data?.message || "Failed to save project");
     } finally {
       setSaving(false);
     }
@@ -261,4 +279,3 @@ export const useProjectBuilder = (id) => {
 };
 
 export default useProjectBuilder;
-

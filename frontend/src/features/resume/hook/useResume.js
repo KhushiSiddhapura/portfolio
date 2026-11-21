@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
-import resumeApi from '../api/resumeApi';
-import { initialResumeState } from '../state/resumeState';
+import { useState, useEffect, useCallback } from "react";
+import resumeApi from "../api/resumeApi";
+import { initialResumeState } from "../state/resumeState";
 
 export const useResume = () => {
   const [data, setData] = useState(initialResumeState);
@@ -8,14 +8,15 @@ export const useResume = () => {
   const fetchResumeData = useCallback(async () => {
     setData((prev) => ({ ...prev, loading: true, error: null }));
     try {
-      const [profile, resumeInfo, experience, skills, projects, achievements] = await Promise.all([
-        resumeApi.getProfile().catch(() => null),
-        resumeApi.getResume().catch(() => null),
-        resumeApi.getExperience().catch(() => []),
-        resumeApi.getSkills().catch(() => []),
-        resumeApi.getProjects().catch(() => []),
-        resumeApi.getAchievements().catch(() => []),
-      ]);
+      const [profile, resumeInfo, experience, skills, projects, achievements] =
+        await Promise.all([
+          resumeApi.getProfile().catch(() => null),
+          resumeApi.getResume().catch(() => null),
+          resumeApi.getExperience().catch(() => []),
+          resumeApi.getSkills().catch(() => []),
+          resumeApi.getProjects().catch(() => []),
+          resumeApi.getAchievements().catch(() => []),
+        ]);
       setData({
         profile,
         resumeInfo,
@@ -30,7 +31,7 @@ export const useResume = () => {
       setData((prev) => ({
         ...prev,
         loading: false,
-        error: err.message || 'Failed to load resume details',
+        error: err.message || "Failed to load resume details",
       }));
     }
   }, []);
@@ -41,7 +42,7 @@ export const useResume = () => {
 
   const downloadOrPrint = () => {
     if (data.resumeInfo?.resumeUrl) {
-      window.open(data.resumeInfo.resumeUrl, '_blank');
+      window.open(data.resumeInfo.resumeUrl, "_blank");
     } else {
       window.print();
     }
@@ -55,4 +56,3 @@ export const useResume = () => {
 };
 
 export default useResume;
-
